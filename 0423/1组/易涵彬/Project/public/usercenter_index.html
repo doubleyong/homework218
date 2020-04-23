@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+        <title>成都彭于晏</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul li{
+                list-style: none;
+                float: left;
+            }
+            @font-face {
+                font-family: 'iconfont';
+                src: url('font/iconfont.eot');
+                src: url('font/iconfont.eot?#iefix') format('embedded-opentype'),
+                     url('font/iconfont.woff2') format('woff2'),
+                     url('font/iconfont.woff') format('woff'),
+                     url('font/iconfont.ttf') format('truetype'),
+                     url('font/iconfont.svg#iconfont') format('svg');
+            }
+            .iconfont {
+                font-family: "iconfont" !important;
+                font-size: 16px;
+                font-style: normal;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            .main{
+                width: 1019px;
+
+                padding-top: 30px;
+            }
+            .briefly{
+                width: 950px;
+                margin: 20px auto;
+                overflow: hidden;
+            }
+            .briefly>li{
+                width: 220px;
+                height: 100px;
+                position: relative;
+                padding: 20px 5px 0;
+                margin-right: 10px;
+            }
+            .briefly>li>div:nth-child(3){
+                color: white;
+                font-size: 12px;
+            }
+            .briefly>li:nth-child(1){
+                background-color: rgb(11,172,211);
+            }
+            .briefly>li:nth-child(2){
+                background-color: rgb(234,76,137);
+            }
+            .briefly>li:nth-child(3){
+                background-color: rgb(255,184,72);
+            }
+            .briefly>li:nth-child(4){
+                background-color: rgb(0,195,182);
+                margin-right: 0px;
+            }
+            .icon{
+                float: left;
+                margin-left: 5px;
+            }
+            .icon>span{
+                color: white;
+                font-size: 50px;
+            }
+            .number{
+                color: white;
+                float: right;
+                text-align: right;
+                height: 50px;
+            }
+            .number>p:nth-child(1){
+                font-size: 30px;
+            }
+            .number>p:nth-child(2){
+                font-size: 12px;
+            }
+            .tiShi{
+                width: 230px;
+                height: 30px;
+                background-color: rgba(0,0,0,.3);
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                line-height: 30px;
+            }
+            .main>h3{
+                font-weight: 300;
+                margin-left: 35px;
+            }
+            .main>p{
+                margin-left: 35px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+            .main>p>a{
+                text-decoration: none;
+                color: rgb(0,195,182);
+            }
+            .faBu{
+                width: 950px;
+                overflow: hidden;
+            }
+            .faBu>div{
+                width: 400px;
+                float: left;
+                margin-top: 30px;
+                margin-left: 35px;
+            }
+            .faBu>div>p:nth-child(1){
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .faBu>div>p:nth-child(2){
+                font-size: 15px;
+                color: rgb(156, 156, 156);
+            }
+            .mune_bottom{
+                margin-top: 50px;
+                margin-left: 35px;
+            }
+            .mune_bottom>ul>li{
+                width: 85px;
+                height: 65px;
+                padding-top: 20px;
+                border-right:1px solid rgb(226, 226, 226) ;
+            }
+            .mune_bottom>ul{
+                width: 1019px;
+                height: 95px;
+                padding-top:10px ;
+                margin-top: 20px;
+                border-bottom:1px solid rgb(226, 226, 226);
+                border-top: 1px solid rgb(226, 226, 226) ;
+            }
+            .mune_bottom>ul>li div{
+                text-align: center;
+            }
+            .mune_bottom>ul>li a{
+                text-decoration: none;
+                color: rgb(0,195,182);
+            }
+            .mune_bottom>ul>li span{
+                font-size: 30px;
+                color: rgb(0,195,182);
+            }
+        </style>
+	</head>
+	<body>
+        <div class="main">
+            <h3>用户中心</h3>
+            <p>亲爱的&nbsp;&nbsp;<a href="">憨憨</a>&nbsp;&nbsp;你好</p>
+            <ul class="briefly">
+                <li>
+                    <P class="icon"><span class="iconfont">&#xe6bf;</span></P>
+                    <div class="number">
+                        <p>0</p>
+                        <P>文章作品</P>
+                    </div>
+                    <div class="tiShi">&nbsp;&nbsp;查看更多</div>
+                </li>
+                <li>
+                    <P class="icon"><span class="iconfont">&#xe8c3;</span></P>
+                    <div class="number">
+                        <p>0</p>
+                        <P>唯然图片</P>
+                    </div>
+                    <div class="tiShi">&nbsp;&nbsp;查看更多</div>
+                </li>
+                <li>
+                    <P class="icon"><span class="iconfont">&#xe61b;</span></P>
+                    <div class="number">
+                        <p>0</p>
+                        <P>我的唯币</P>
+                    </div>
+                    <div class="tiShi">&nbsp;&nbsp;查看更多</div>
+                </li>
+                <li>
+                    <P class="icon"><span class="iconfont">&#xe60b;</span></P>
+                    <div class="number">
+                        <p>0</p>
+                        <P>评论数量</P>
+                    </div>
+                    <div class="tiShi">&nbsp;&nbsp;查看更多</div>
+                </li>
+            </ul>
+            <div class="faBu">
+                <div>
+                    <p>我的最近发布</p>
+                    <p>您还没发布过任何内容。</p>
+                </div>
+                <div>
+                    <p>我的最近草稿</p>
+                    <p>暂无未发布文章或图片。</p>
+                </div>
+            </div>
+            <div class="mune_bottom">
+                <div>快捷菜单</div>
+                <ul>
+                    <li>
+                        <a href="">
+                            <div><span class="iconfont">&#xe652;</span></div>
+                            <div>我的主页</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div><span class="iconfont">&#xe613;</span></div>
+                            <div>我的订单</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div><span class="iconfont">&#xe676;</span></div>
+                            <div>发布文章</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div><span class="iconfont">&#xe611;</span></div>
+                            <div>上传图片</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div><span class="iconfont">&#xe69d;</span></div>
+                            <div>修改资料</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div><span class="iconfont">&#xe622;</span></div>
+                            <div>修改头像</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+	</body>
+</html>
