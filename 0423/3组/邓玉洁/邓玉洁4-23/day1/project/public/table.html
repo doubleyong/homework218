@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <title>王者荣耀</title>
+    <style>
+        #from{
+            position: fixed;right: 150px;top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>学生管理</h2>
+        <div><input type="text" id="txtCardSearch" class="form-group" placeholder="卡号"><button class="btn btn-default" id="btnSearch">搜索</button></div>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>账号</th>
+                <th>密码</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="tbStudent">
+
+            </tbody>
+        </table>
+        <div id="divPage">
+
+        </div>
+        <div id="from">
+            <form id="addForm">
+                <h4 class="title">添加账号</h4>
+                <label for="txtUser">账号</label>
+                <p><input type="text" id="txtUser" placeholder="账号" name="txtUser"></p>
+                <label for="txtPaw">密码</label>
+                <p><input type="text" id="txtPaw" placeholder="密码" name="txtPaw"></p>
+                <label for="txtAge">年龄</label>
+                <p><input type="number" id="txtAge" placeholder="年龄" name="txtAge"></p>
+                <button class="btn btn-primary" id="btnAdd">保存</button>
+            </form>
+
+
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/ajaxFn.js"></script>
+<script src="js/studentManage.js"></script>
+</html>
