@@ -1,0 +1,56 @@
+#stuNum{
+    width: 400px;
+    text-align: center;
+}
+#container{
+    width: 100%;
+    height: 300px;
+}
+
+.float-left>div{
+    float: left;
+    border: 2px solid black;
+    width: 400px;
+    height: 300px;
+    background-color: rgba(666,666,666,0.8);
+    margin-left: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+/*.bgimg{*/
+/*background-image: url("images/news-bg.jpg");*/
+/*background-repeat: no-repeat;*/
+/*background-size: cover;*/
+/*}*/
+.float-left{
+    overflow: hidden;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    margin-top:30px;
+}
+.home-news>p:hover a{
+    color: #359DBA;
+    !important;
+}
+
+.float-left h2{
+    text-align: center;
+    font-size: 25px;
+    font-family: 微软雅黑;
+    color:#359DBA;
+}
+.float-left p{
+    margin-left: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+#homeTeacher{
+    width: calc(50% - 60px);
+}
+
+#stuNum{
+    width: calc(50% - 50px);
+}
+#GuiZhang,#foundStu{
+    overflow: scroll;
+}
