@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #tbUser:empty:before{
+            content:"暂无数据";
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<h2>用户管理</h2>
+<div>
+    用户名： <input type="text" name="txtSearchName" id="txtSearchName">
+    性别：
+    <select name="selSex" id="selSex">
+        <option value="-1">全部</option>
+        <option value="1">男</option>
+        <option value="0">女</option>
+    </select>
+    <button id="btnSearch">查询</button>
+
+</div>
+<table>
+    <thead>
+    <tr>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody id="tbUser">
+
+    </tbody>
+</table>
+<div id="divPage"></div>
+<div>
+    <form id="addForm">
+    <p><input type="text" name="txtUser" id="txtUser"></p>
+    <p><input type="password" name="txtPwd" id="txtPwd"></p>
+    <p><button id="btnAdd">添加</button></p>
+    </form>
+</div>
+<script src="js/jquery.3.4.0.js"></script>
+<script src="js/ajaxFn.js"></script>
+<script>
+    var totalCount;
+    var totalPage;
+    var currentPage = 1;
+    var pageSize = 3;
+    $(function () {
+        getUserlist();
+        pageBar();
+        delEvent();
+        addEvent();
+        searchEvent();
+        pageEvent();
+    });
+    function pageEvent() {
+        $("#divPage").on("click","button",function () {
+            currentPage = Number($(this).text());
+            getUserlist();
+        })
+    }
+    function pageBar() {
+        var searchName = $("#txtSearchName").val();
+        var sex = $("#selSex").val();
+        ajax("post","totalCount.do",true,function (data) {
+           var json = JSON.parse(data);
+           totalCount = json[0].num;
+           totalPage = Math.ceil(totalCount/pageSize);
+            $("#divPage").html("");
+            for (var i=1;i<=totalPage;i++){
+                $("#divPage").append(`<button>${i}</button>`);
+            }
+        },"user="+searchName+"&sex="+sex)
+    }
+    function searchEvent() {
+        $("#btnSearch").click(function () {
+            currentPage = 1;
+            getUserlist();
+            pageBar();
+        })
+    }
+    function addEvent() {
+        $("#btnAdd").click(function () {
+//            var user = $("#txtUser").val();
+//            var pwd = $("#txtPwd").val();
+            ajax("post","postadd.do",true,function (data) {
+                alert(data);
+                getUserlist();
+            },$("#addForm").serialize());
+        })
+    }
+    function delEvent() {
+        $("#tbUser").on("click",".del",function () {
+            var id = $(this).attr("data-id");
+            ajax("get","delete.do",true,function (data) {
+                alert(data);
+                getUserlist();
+            },"uid="+id)
+        })
+    }
+function getUserlist() {
+    var searchName = $("#txtSearchName").val();
+    var sex = $("#selSex").val();
+    console.log(sex);
+    console.log("user="+searchName+"&sex="+sex+"&curPage="+currentPage+"&pageSize="+pageSize);
+    ajax("post","search.do",true,function (data) {
+        var json = JSON.parse(data);
+        displayUserData(json);
+    },"user="+searchName+"&sex="+sex+"&curPage="+currentPage+"&pageSize="+pageSize);
+
+}
+function displayUserData(arr) {
+    $("#tbUser").html("");
+    arr.forEach(function (item,index) {
+        $("#tbUser").append(`<tr><td>${item.username}</td><td>${item.pwd}</td><td><button class="del" data-id="${item.id}">删除</button></td></tr>`)
+    })
+}
+</script>
+</body>
+</html>
