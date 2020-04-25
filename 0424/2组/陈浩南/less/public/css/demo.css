@@ -1,0 +1,56 @@
+#btnLogin {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+button {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+h2 {
+  color: #ed926f;
+}
+div {
+  height: 100px;
+  width: 100px;
+  background: url("../images/icon.jpg");
+  background-size: cover;
+}
+p {
+  color: orange;
+  font-size: 12px;
+  color: pink;
+}
+#footer {
+  color: #777777;
+}
+section {
+  width: 800px;
+}
+#header {
+  border: 1px solid pink;
+}
+#header nav {
+  border: 1px solid red;
+  width: 1200px;
+}
+#header nav > ul > li {
+  width: 150px;
+  height: 50px;
+  font-size: 12px;
+}
+#header nav > ul > li a {
+  text-decoration: none;
+  color: rebeccapurple;
+}
+#header nav > ul > li a:hover {
+  text-decoration: underline;
+  color: orangered;
+}
+#header nav > ul > li .submenu {
+  overflow: hidden;
+}
+#header nav > ul > li .submenu ul li {
+  color: red;
+}
