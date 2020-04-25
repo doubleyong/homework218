@@ -1,0 +1,24 @@
+创建四张表，学生表（student） 班级表（class）成绩表（sorce）课程表（course
+）
+学生表的属性：
+	学号 类型 int
+	学生名字 类型 varchar 长度20;
+	年龄 类型 int
+	性别 类型 char 长度4
+	出生日期 类型 date
+	入学日期 类型 datetime
+	所属班级编号 类型 varchar 长度20
+班级表的属性:
+	班级编号 类型 varchar 长度20
+	班级名字 类型 varchar 长度50
+	班主任 	 类型 varchar 长度20
+	开班时间 类型 date     
+成绩表的属性:
+	id   类型 int
+	学生学号 类型 int
+	课程编号 类型 varchar 长度40
+	课程成绩 类型 int
+	考试时间 类型 date
+课程表的属性：
+	课程编号 类型 varchar 长度40
+	课程名称 类型 varchar 长度40

@@ -1,0 +1,18 @@
+--  创建一张巴士表 t_bus 具有下列属性
+--  b_id[巴士编号]
+--  b_name[巴士名称]
+--  b_busNo[巴士车牌号(varchar类型)]
+--  b_reDate[巴士出厂日期(年-月-日)]
+--  b_maxNo[限载人数]
+
+-- 创建一张人员表 t_person 具有下列属性
+--  p_id[编号]
+--  p_name[游客姓名]
+--  p_nationalId [游客国籍id]
+--  p_sex [游客性别]
+--  p_age [游客年龄]
+--  p_birthday [游客生日(年-月-日)]
+
+-- 创建一张国籍表 t_national 具有下列属性
+--  n_id [编号]
+--  n_nationalName [国籍名称]
