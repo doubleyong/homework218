@@ -1,0 +1,574 @@
+/* 字体图标 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+      url('../font/iconfont.woff2') format('woff2'),
+      url('../font/iconfont.woff') format('woff'),
+      url('../font/iconfont.ttf') format('truetype'),
+      url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  /* 头部 */
+header{
+    width: 1903px;
+    height: 120px;
+    padding-top: 130px;
+    background-image: url("../img/head/headbgi.png");
+    background-attachment: fixed;
+}
+.headnav{
+    width: 1903px;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(0,0,0,.5);
+    overflow: hidden;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+}
+.logo{
+    height: 50px;
+    margin-left: 320px;
+}
+nav{
+    width: 700px;
+    margin-left: 570px;
+}
+nav>ul>li{
+    width: 100px;
+    
+}
+nav>ul>li>a{
+    color: white;
+    font-size: 14px;
+    transition:all .3s ease;
+}
+nav>ul>li:hover a{
+    color: rgb(146,139,129);
+}
+/* 搜索登陆与注册 */
+.head_login{
+    width: 170px;
+    height: 50px;
+    margin-right: 320px;
+    padding-top: 10px;
+
+}
+/* 选中登陆 */
+.head_login>ul>li:nth-child(2){
+    border-radius: 5px 0 0 5px;
+    margin-right: 2px;
+}
+/* 选中注册 */
+.head_login>ul>li:nth-child(3){
+    border-radius: 0px 5px 5px 0px;
+}
+.head_login>ul>li>a:hover{
+    color: rgb(146,139,129);
+}
+.head_login>ul>li>a{
+    color: white;
+    transition:all .3s ease;
+}
+.head_login ul li{
+    width: 55px;
+    height: 30px;
+    background-color: rgb(119,109,96);
+    line-height: 30px;
+    text-align: center;
+}
+/* 选中放大镜 */
+.head_login>ul>li:nth-child(1){
+    color: white;
+    background-color: rgba(0,0,0,0);
+}
+header h1{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+/* 选中头部文字 */
+header>div:nth-child(2)>div{
+    width: 160px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 11px;
+    text-align: center;
+    background-color: rgb(152,135,111);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    color: white;
+}
+/* 内容一，通知条 */
+.news{
+    width: 1903px;
+    height: 50px;
+    background-color: rgb(241,241,241);
+    color: rgb(153,153,153);
+}
+.news>div{
+    float: left;
+    margin-left: 320px;
+    line-height: 50px;
+}
+.news>ul>li{
+    margin-left: 50px;
+    line-height: 50px;
+}
+.news>ul>li:nth-child(1){
+    margin-left: 10px;
+}
+.news>ul>li:nth-child(3){
+    width: 200px;
+}
+.news>ul>li>a{
+    font-size: 12px;
+    color: rgb(153,153,153);
+}
+.news>ul>li>a:hover{
+    color: rgb(0,195,182);
+    text-decoration:underline;
+}
+/* 内容二：广告与轮播图 */
+.banner{
+    height: 310px;
+    background-color: white;
+    padding-top: 30px;
+}
+.banner>div{
+    width: 1260px;
+    height: 250px;
+    margin-left: 320px;
+    overflow: hidden;
+}
+.banner>div>div{
+    float: left;
+}
+.banner>div>div>img{
+    transition:all .5s ease;
+}
+.banner>div>div:nth-child(1){
+    width: 620px;
+    height: 250px;
+    margin-right: 20px;
+    
+}
+.banner>div>div:nth-child(2){
+    width: 300px;
+    height: 250px;
+    margin-right: 20px;
+}
+.banner>div>div:nth-child(3){
+    width: 300px;
+    height: 250px;
+}
+.banner>div>div:nth-child(3)>img{
+    width: 300px;
+    height: 250px;
+}
+/* 内容三：主要内容列表 */
+.content{
+    width: 1903px;
+    background-color: rgb(241,241,241);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.content>ul{
+    width: 1260px;
+    margin-left: 320px;
+}
+.content>ul>li{
+    width: 280px;
+    height: 240px;
+    padding: 10px 10px 0 10px ;
+    position: relative;
+    background-color: white;
+    margin-right: 20px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.content>ul>li:nth-child(4n){
+    margin-right: 0;
+}
+.content>ul>li:hover div:nth-child(1){
+    height: 35px;
+    visibility: visible;
+    opacity: 1;
+}
+.content>ul>li:hover p:nth-child(3){
+    color:rgb(0,195,182);
+}
+.content>ul>li:hover>div:nth-child(2){
+    padding-top: 10px;
+    height: 170px;
+}
+.content>ul>li>div:nth-child(1){
+    width: 280px;
+    height: 15px;
+    background-color: black;
+    color: white;
+    line-height: 35px;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition:all .3s ease;
+}
+.content>ul>li>div:nth-child(2){
+    width: 280px;
+    height: 180px;
+    overflow: hidden;
+    transition:all .3s ease;
+}
+.content>ul>li>div:nth-child(1)>a{
+    color: white;
+}
+.content>ul>li>div:nth-child(1)>span:nth-child(3),span:nth-child(4){
+    float: right;
+}
+.content>ul>li>p:nth-child(3){
+    width: 280px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+.content>ul>li>p:nth-child(4){
+    font-size: 8px;
+    line-height: 20px;
+    color: rgb(158, 158, 158);
+    margin-top: 10px;
+}
+.content>ul>li>p:nth-child(4)>a{
+    color: rgb(158, 158, 158);
+}
+.content>div>ul>li{
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 35px;
+    margin-left: 5px;
+    transition:all .3s ease;
+}
+.content>div>ul>li>a{
+    color: rgb(119, 119, 119);
+    transition:all .3s ease;
+}
+.content>div>ul>li:hover{
+    background-color: rgb(0,195,182);
+}
+.content>div>ul>li:hover>a{
+    color: white;
+}
+.content>div>div>div:nth-child(1){
+    color: rgb(119, 119, 119);
+    width: 55px;
+    height: 35px;
+    font-size: 4px;
+    line-height: 35px;
+}
+.content>div>div>div:nth-child(2)>input{
+    width: 45px;
+    height: 35px;
+    border-radius: 5px 0px 0px 5px ;
+    border: 1px solid rgb(160, 160, 160);
+}
+.content>div>div>div:nth-child(2)>button{
+    width: 35px;
+    height: 35px;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid rgb(160, 160, 160);
+}
+.content>div>div{
+    width: 300px;
+    margin-left: 300px;
+}
+.content>div>div>div:nth-child(2){
+    margin-left: 100px;
+}
+.content>div{
+    width: 485px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.hot{
+    width: 1903px;
+    height: 645px;
+    background-image: url("../img/section3/bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 10px;
+}
+.hot>ul{
+    width: 1260px;
+    margin: 0 auto;
+}
+.hot>ul>li{
+    width: 315px;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+}
+.hot_title{
+    width: 315px;
+    height: 55px;
+    background-color: rgba(0,0,0,.5);
+    position: absolute;
+    top: 260px;
+    transition:all .3s ease;
+}
+.hot_mengban{
+    width: 315px;
+    height: 260px;
+    line-height: 260px;
+    text-align: center;
+    background-color: rgba(0,195,182,0.5) ;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition:all .3s ease;
+}
+.hot_title h4{
+    color: white;
+}
+.hot_title div{
+    color: white;
+    font-size: 10px;
+    margin-top: 8px;
+}
+.hot_title div div:nth-child(1){
+    float: left;
+}
+.hot_title div div:nth-child(2){
+    float: right;
+}
+.hot_mengban span{
+    font-size: 100px;
+    color: white;
+    transition:all .3s ease;
+}
+.hot>ul>li:hover>.hot_mengban{
+    visibility: visible;
+    opacity: 1;
+}
+.hot>ul>li:hover>.hot_mengban>span{
+    font-size: 50px;
+}
+.hot>ul>li:hover>.hot_title{
+    top: 205px;
+}
+.hot>div{
+    width: 250px;
+    height: 35px;
+    font-size: 12px;
+    border-radius: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: white;
+    background-color: rgb(0,195,182);
+    margin: 50px auto;
+    transition:all .3s ease;
+}
+.hot>div:hover{
+    background-color: rgb(234,76,137);
+}
+.service{
+    width: 1903px;
+    padding-top: 40px;
+    
+}
+.service>ul>li{
+    width: 420px;
+}
+.service>ul>li>div{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: rgb(0,195,182);
+    border-radius: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+.service>ul>li>div>span{
+    font-size: 50px;
+    color: white;
+}
+.service>ul>li>h4{
+    text-align: center;
+    color: rgb(0,195,182);
+    margin-top: 20px;
+}
+.service>ul>li>p{
+    text-align: center;
+    color: rgb(119, 119, 119);
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+.service>ul{
+    width: 1260px;
+    height: 250px;
+    margin: 0 auto;
+}
+.banner>ul{
+    width: 1903px;
+    height: 300px;
+}
+.banner>ul>li{
+    width: 473.844px;
+    height: 250px;
+    margin-right: 1.9px;
+    padding-top: 50px;
+    background-color: rgb(241,241,241);
+}
+.banner>ul>li:nth-child(4){
+    margin-right: 0;
+}
+.banner>ul>li>h3{
+    text-align: center;
+    color: rgb(139,139,139);
+}
+.banner ul li div{
+    padding-top: 30px;
+    text-align: center;
+}
+.banner ul li div span{
+    font-size: 100px;
+    color: rgb(139,139,139);
+}
+footer{
+    width: 1903px;
+    background-color: rgb(34,34,34);
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+footer>ul{
+    width: 1260px;
+    margin: auto;
+    border-bottom:1px solid rgb(128, 128, 128) ;
+}
+footer>ul>li{
+    color: white;
+    font-weight: 100;
+    margin-right: 70px;
+}
+footer>ul>li>h3{
+    color: rgb(178,178,178);
+}
+footer>ul>li>p{
+    font-size: 12px;
+    color: rgb(89,89,89);
+}
+footer>ul>li>ul>li>a{
+    font-size: 12px;
+    color: rgb(150, 150, 150);
+    line-height: 30px;
+    transition:all .3s ease;
+}
+footer>ul>li>ul>li>a:hover{
+    color: rgb(214, 214, 214);
+    text-decoration:underline
+}
+footer>ul>li>P{
+    line-height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+footer>ul>li>P>a{
+    color: rgb(150, 150, 150);
+    transition:all .3s ease;
+}
+footer>ul>li>P>a:hover{
+    color: rgb(214, 214, 214);
+    text-decoration:underline
+}
+footer>ul>li:nth-child(1){
+    width: 440px;
+}
+footer>ul>li:nth-child(2),li:nth-child(3){
+    width: 60px;
+}
+footer>ul>li:nth-child(4){
+    width: 120px;
+}
+footer>ul>li:nth-child(5){
+    width: 220px;
+    margin-right: 0;
+}
+footer>ul>li:nth-child(4)>ul>li{
+    float: none;
+}
+.partner{
+    margin-top: 20px;
+}
+.partner>div{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    float: left;
+    transition:all .3s ease;
+    text-align: center;
+    margin-right: 5px;
+}
+.partner>div>span{
+    font-size: 15px;
+    line-height: 30px;
+    color: rgb(150, 150, 150);
+}
+.partner>div:nth-child(6){
+    visibility: hidden;
+}
+footer>ul>li>div>input{
+    width: 165px;
+    height: 25px;
+    background-color: rgb(28,28,28);
+    border: 1px solid rgb(136, 136, 136);
+    border-radius: 3px;
+}
+footer>ul>li>div>button{
+    width: 42px;
+    height: 25px;
+    color: white;
+    background-color:rgb(0,195,182) ;
+    border: 0px solid white;
+    margin-left: 5px;
+}
+.partner>div:nth-child(1):hover{
+    background-color: rgb(104,144,33);
+}
+.partner>div:nth-child(2):hover{
+    background-color: rgb(211,89,69);
+}
+.partner>div:nth-child(3):hover{
+    background-color: rgb(186,83,198);
+}
+.partner>div:nth-child(4):hover{
+    background-color: rgb(7,163,202);
+}
+.partner>div:nth-child(5):hover{
+    background-color: rgb(201,132,21);
+}
+.copyright{
+    width: 1260px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(145, 145, 145);
+    font-size: 12px;
+}
+.copyright>span{
+    color: rgb(0,195,182) ;
+}
