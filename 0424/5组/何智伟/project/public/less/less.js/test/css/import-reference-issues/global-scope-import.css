@@ -1,0 +1,13 @@
+.theOnlySelector,
+.unusedAndReference {
+  avoid: warning;
+}
+.unusedAndReference {
+  unused-and: reference;
+}
+.test-rule-b {
+  color: red;
+}
+.test-rule-b {
+  background-color: green;
+}
