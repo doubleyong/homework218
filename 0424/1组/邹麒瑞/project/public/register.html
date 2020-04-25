@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+<div id="box">
+  <form action="register.do" method="post">
+    <h2>注册</h2>
+    <p>用户名：<input type="text" placeholder="请输入用户名" name="username" id="username"></p>
+    <p>密&nbsp;&nbsp;&nbsp;码：<input type="password" placeholder="请输入密码" name="password" id="password"></p>
+    <button id="isZhuCe">注册</button>
+    <p id="loginA"><a href="login.html">已有账号点击此处登录</a></p>
+  </form>
+</div>
+</body>
+<script src="js/jquery3.4.1.js"></script>\
+<script>
+  $("#isZhuCe").click(function () {
+      var user = $("#username").val();
+      var pwd = $("#password").val();
+      var  obj = {username:user,password:pwd};
+      localStorage.setItem("obj",JSON.stringify(obj)); //转为字符串   //方法一：获取数据并储存
+      localStorage.password = pwd;        //方法二：获取数据并储存
+      // location.href="login.html";
+  })
+</script>
+</html>
