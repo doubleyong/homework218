@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" manifest="dome.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<form action="login.do" method="post">
+    <p>592652<input type="text" name="txtUser" id="txtUser" placeholder="用户名"></p>
+    <p><input type="text" name="txtPwd" id="txtPwd" placeholder="密码"></p>
+    <p><button id="btnLogin" type="button">登录</button></p>
+</form>
+<script src="js/jQuery%20JavaScript%20Library%20v3.4.1.js"></script>
+<script type="text/javascript">
+    $("#btnLogin").click(function () {
+      var user=$("#txtUser").val();
+      var pwd=$("#txtPwd").val();
+        //本页面存储
+      // sessionStorage.setItem("username",user);
+      //   sessionStorage.password=pwd;
+      //   location.href="studentsMang.html";
+
+        //网站永久存储
+        // localStorage.setItem("username",user);
+        //   localStorage.password=pwd;
+        //   location.href="studentsMang.html";
+
+        //对象存储
+        var obj={username:user,password:pwd};
+        localStorage.setItem("userInfo",JSON.stringify(obj));//需要转成json格式的字符串存储才会显示成字符串
+        location.href="studentsMang.html";
+    })
+
+
+</script>
+</body>
+</html>

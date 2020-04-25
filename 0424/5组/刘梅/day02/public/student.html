@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui-v2.5.6/layui/css/layui.css" media="all">
+    <style type="text/css">
+        table{
+            width:600px;
+            text-align:center;
+        }
+        table tr th,td{
+            height:30px;
+            line-height:30px;
+            border:1px solid #ccc;
+        }
+        #pageStyle{
+            display:inline-block;
+            width:32px;
+            height:32px;
+            border:1px solid #CCC;
+            line-height:32px;
+            text-align:center;
+            color:#999;
+            margin-top:20px;
+            text-decoration:none;
+
+        }
+        #pageStyle:hover{
+            background-color:#CCC;
+        }
+        #pageStyle .active{
+            background-color:#0CF;
+            color:#ffffff;
+        }
+        #neirong{
+            position: relative;
+
+        }
+        #addDiv{
+            background-color: rgba(210, 210, 210, 0.76);
+            color: #666666;
+            width: 700px;
+            height: 500px;
+            margin: 0 auto;
+            line-height: 50px;
+            padding-left: 50px;
+            padding-top: 50px;
+            position: fixed;
+            top:50px;
+            left: 250px;
+            z-index: 1;
+        }
+        #addTable input{
+            margin-right: 50px;
+            height: 20px;
+            width: 200px;
+
+        }
+        #addxinxi{
+            margin-left: 200px;
+        }
+        #addTable button{
+            margin-right: 100px;
+            background-color: #009671;
+            width: 80px;
+            height: 30px;
+            color: white;
+            border-radius: 5px;
+            border: none;
+        }
+        .green{
+            background-color: #009688;
+        }
+        button{
+            color: white;
+            width: 50px;
+            height: 30px;
+            border-radius: 2px;
+            border: none;
+            margin: 3px;
+        }
+        #xingShi {
+            width: 70px;
+            margin: 0;
+        }
+        #shanChu{
+            width: 90px;
+            padding-left: 5px;
+        }
+        button:hover{
+            background-color:#31708F ;
+        }
+        #addTable button:hover{
+            color: white;
+        }
+        .xiugai{
+            padding-left: 12px;
+
+        }
+        .shanChu{
+
+            padding-left: 12px;
+        }
+        .chaxun{
+            background-color: #1E9FFF;
+        }
+        #zhezhao{
+            background-color: rgba(157, 157, 157, 0.23);
+            width: 100%;
+            height: 650px;
+            position: fixed;
+            top:0;
+
+        }
+        .hide{
+            display: none;
+        }
+        .div input{
+            width: 140px;
+            height: 30px;
+            border-radius: 1px;
+
+
+        }
+        .div{
+            background-color: #F2F2F2;
+            height: 50px;
+            line-height: 50px;
+        }
+        #tiShikuang{
+            background-color: white;
+            color: red;
+            text-align: center;
+            width: 350px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius:10px;
+            position: fixed;
+            top:100px;
+            left: 500px;
+            z-index: 1;
+        }
+        .guanBi{
+            text-align: right;
+            padding-right: 10px;
+            width: auto;
+            height: 40px;
+            line-height: 40px;
+            background-color: #FFB800;
+            font-size: 20px;
+            color: white ;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+
+        }
+        .guanBi:hover{
+            color: #009688;
+        }
+        h1{
+            margin-top: 30px;
+        }
+    </style>
+<body>
+<div id="neirong">
+    <div class="div layui-table">
+        <button id="tianJia" class="green"><i class="layui-icon">&#xe654;</i>添加</button>
+        <button id="xingShi" class="green">全部显示</button>
+        <button id="shanChu" class="green"><i class="layui-icon">&#xe640;</i>全部删除</button>
+        <input id="xueHao" type="text" placeholder="请输入学号"/><button class="chaxun" id="xueHaoChaXun"><i class="layui-icon">&#xe615;</i>查询</button>
+        <input id="xingMing" type="text" placeholder="请输入姓名"/><button class="chaxun" id="xingMingChaXun"><i class="layui-icon">&#xe615;</i>查询</button>
+        <input id="banJi" type="text" placeholder="请输入年级"/><button class="chaxun" id="banJiChaXun"><i class="layui-icon">&#xe615;</i>查询</button>
+        <input  id="xingBie" type="text" placeholder="请输入性别"/><button class="chaxun" id="xingBieChaXun"><i class="layui-icon">&#xe615;</i>查询</button>
+    </div>
+    <table class="layui-table " >
+        <colgroup>
+            <col width="">
+            <col width="">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>班级</th>
+            <th>出生日期</th>
+            <th>班主任</th>
+            <th>入院时间</th>
+<!--            <th>地址</th>-->
+<!--            <th>入院时间</th>-->
+<!--            <th>年级</th>-->
+<!--            <th>班主任</th>-->
+<!--            <th>状态</th>-->
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbStudent">
+        </tbody>
+    </table>
+    <div id="addDiv" class="hide">
+        <h1>学生信息</h1>
+        <form  id="addTable">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学号：<input type="text" name="studenttNo"  id="studenttNo" required=""/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：<input type="text" name="studenttName" id="studenttName"  required=""/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别：<select name="studentSex" id="studentSex" style="margin-right: 216px">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：<input type="text" name="studentAge" id="studentAge"  required="" /><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;班级：<input type="text" name="studentClass" id="studentClass"  required=""/>
+            出生日期：<input type="text" name="birthday" id="birthday"  required=""/><br/>
+<!--            家长姓名：<input type="text" name="parentsName" id="parentsName"  required=""/>-->
+<!--            联系方式：<input type="text" name="parentsPhone" id="parentsPhone"  required=""/><br/>-->
+<!--            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：<input type="text" name="address" id="address"  required=""/>-->
+            入院时间：<input type="text" name="enrolledDate" id="enrolledDate"  required=""/><br/>
+<!--            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年级：<input type="text" name="grade" id="grade"  required=""/>-->
+            &nbsp;&nbsp;&nbsp;&nbsp;班主任：<input type="text" name="headeTeacher" id="headeTeacher"  required=""/><br/>
+<!--            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态：<select name="notes" id="notes" >-->
+<!--            <option value="在校">在校</option>-->
+<!--            <option value="毕业">毕业</option>-->
+<!--            <option value="退学">退学</option>-->
+<!--        </select><br/>-->
+            <button id="addxinxi" type="button" >保存</button>
+            <button id="cencelAdd"  type="button">取消</button>
+        </form>
+    </div>
+    <div id="zhezhao" class="hide"></div>
+    <div id="tiShikuang" class="hide">
+        <p class="guanBi">X</p>
+        <h1 class="">你 的输入有误</h1>
+    </div>
+</div>
+<script src="layer-v3.1.1/layer/layer.js"></script>
+<script src="layui-v2.5.6/layui/layui.js"></script>
+<script src="layui-v2.5.6/layui/layui.all.js"></script>
+<script src="layer-v3.1.1/layer-v3.1.1/layer/layer.js"></script>
+<script src="js/jQuery%20JavaScript%20Library%20v3.4.1.js"></script>
+
+<script type="text/javascript">
+    var StudentsFileArr=[]
+    // var StudentsFileArr = [
+    //     {
+    //         "studenttNo":"202003","studenttName":"羊若然","studentSex":"男",
+    //         "studentAge":"5","birthday":"2016-2-4","parentsName":"羊付汀","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2020-9-1","grade":"学前班",
+    //         "headeTeacher":"许泓鑫","studentClass":"2班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"202002","studenttName":"若然","studentSex":"男",
+    //         "studentAge":"5","birthday":"2016-5-4","parentsName":"付汀","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2020-9-1","grade":"学前班",
+    //         "headeTeacher":"李四","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"202001","studenttName":"尔若然","studentSex":"男",
+    //         "studentAge":"5","birthday":"2016-5-4","parentsName":"羊汀","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2020-9-1","grade":"学前班",
+    //         "headeTeacher":"李四","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"202000","studenttName":"羊然","studentSex":"男",
+    //         "studentAge":"5","birthday":"2016-2-4","parentsName":"羊昌","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2020-9-1","grade":"学前班",
+    //         "headeTeacher":"许泓鑫","studentClass":"2班","notes":"在校"
+    //     },
+    //
+    //     {
+    //         "studenttNo":"1903","studenttName":"羊若冰","studentSex":"女",
+    //         "studentAge":"6","birthday":"2015-8-4","parentsName":"羊德昌","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2019-9-1","grade":"小班",
+    //         "headeTeacher":"严昌熙","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1902","studenttName":"羊冰","studentSex":"女",
+    //         "studentAge":"6","birthday":"2015-8-4","parentsName":"羊德","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2019-9-1","grade":"小班",
+    //         "headeTeacher":"严昌熙","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1901","studenttName":"毛照君","studentSex":"女",
+    //         "studentAge":"6","birthday":"2015-8-4","parentsName":"毛哲廷","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2019-9-1","grade":"小班",
+    //         "headeTeacher":"凤沁函","studentClass":"2班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1900","studenttName":"毛君","studentSex":"女",
+    //         "studentAge":"6","birthday":"2015-8-4","parentsName":"毛廷","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2019-9-1","grade":"小班",
+    //         "headeTeacher":"凤沁函","studentClass":"2班","notes":"退学"
+    //     },
+    //
+    //     {
+    //         "studenttNo":"1803","studenttName":"羊多利","studentSex":"女",
+    //         "studentAge":"7","birthday":"2014-8-4","parentsName":"羊希浩","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2018-9-1","grade":"中班",
+    //         "headeTeacher":"习宁玲","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1802","studenttName":"羊利","studentSex":"女",
+    //         "studentAge":"7","birthday":"2014-8-4","parentsName":"羊浩","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2018-9-1","grade":"中班",
+    //         "headeTeacher":"习宁玲","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1801","studenttName":"毛超平","studentSex":"女",
+    //         "studentAge":"5","birthday":"2014-8-4","parentsName":"毛保翔","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2018-9-1","grade":"中班",
+    //         "headeTeacher":"习宁玲","studentClass":"1班","notes":"转学"
+    //     },
+    //     {
+    //         "studenttNo":"1800","studenttName":"毛平","studentSex":"女",
+    //         "studentAge":"5","birthday":"2014-9-4","parentsName":"毛翔","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2018-9-1","grade":"中班",
+    //         "headeTeacher":"习宁玲","studentClass":"1班","notes":"在校"
+    //     },
+    //
+    //     {
+    //         "studenttNo":"1702","studenttName":"毛天妍","studentSex":"女",
+    //         "studentAge":"6","birthday":"2014-8-4","parentsName":"毛建","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2017-9-1","grade":"大班",
+    //         "headeTeacher":"羊轩荣","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1701","studenttName":"毛妍","studentSex":"女",
+    //         "studentAge":"6","birthday":"2014-8-4","parentsName":"毛建勇","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2017-9-1","grade":"大班",
+    //         "headeTeacher":"羊轩荣","studentClass":"1班","notes":"在校"
+    //     },
+    //     {
+    //         "studenttNo":"1700","studenttName":"毛天","studentSex":"女",
+    //         "studentAge":"6","birthday":"2014-9-4","parentsName":"毛勇","parentsPhone":"123456789","address":"四川-成都","enrolledDate":"2017-9-1","grade":"大班",
+    //         "headeTeacher":"羊轩荣","studentClass":"1班","notes":"在校"
+    //     }
+    //
+    // ];
+    var stundno="";//存储值的变量
+    //    var arr=[];//班级存储
+    //    var xingBieArr=[];//性别存储
+    //
+    var  arr=[];//年级数组
+    var xingBieArr=[];//性别数组
+    var $table = $('table');
+    var  currentPage = 0;//当前页默认值为0
+    var pageSize = 4;//每一页显示的数目
+    var sumRows = $table.find('#tbStudent tr').length;
+    var  sumPages = Math.ceil(sumRows/pageSize);//总页数
+    var  $pager = $('<div class="page"></div>');  //新建div，放入a标签,显示底部分页码
+    var  $pagess = $('#pageStyle');
+    ajaxGetDate();
+
+
+    //使用ajax去调用数据
+    function ajaxGetDate() {
+//1.创建对象
+        var xmlHttp;
+        if(window.XMLHttpRequest){
+            xmlHttp=new XMLHttpRequest();
+        }else if(window.ActiveXObject){
+            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //2.设置请求
+        //open方法，三个参数，1.提交方式，2.请求URL地址，3.同步与异步 true(异步)，false(同步)
+            xmlHttp.open("get","student.do");
+   //3.接收影响回来数据（以事件的形式）
+        xmlHttp.onreadystatechange=function () {//onreadystatechange状态有改变的时候
+            console.log(xmlHttp.status);//http请求 状态
+            console.log(xmlHttp.readyState);//ajax状态
+            if(xmlHttp.status==200&&xmlHttp.readyState==4){
+                // console.log(xmlHttp.responseText)// xmlHttp.responseText是响应回来的文本
+                StudentsFileArr=JSON.parse(xmlHttp.responseText);//xmlHttp.responseText字符串对象转换成json对象；赋值给StudentsFileArr
+                bindDataStudent();
+                str()
+            }
+        }
+        //4.发起请求
+        xmlHttp.send(null);
+    }
+    function  bindDataStudent() {//
+//        var tbStudent=$("#tbStudent");
+//        tbStudent.innerHTML="";//清空该ID里的所有信息
+        $("#tbStudent").html("");//清空该ID里的所有信息
+        for(var i=0;i<StudentsFileArr.length;i++){//循环遍历
+            $("#tbStudent").append("<tr><td>"+StudentsFileArr[i].stid+"</td><td>"+StudentsFileArr[i].stname+"</td><td>"+StudentsFileArr[i].stsex+"</td><td>"+StudentsFileArr[i].stage+"</td>" +
+                "<td>"+StudentsFileArr[i].stClass+"</td><td>"+StudentsFileArr[i].birthday.replace('T16:00:00.000Z','1')+"</td><td>"+StudentsFileArr[i].headeTeacher+"</td><td>"+StudentsFileArr[i].enrolledDate.replace('T16:00:00.000Z','')+"</td>" +
+                "<td><button class='layui-btn layui-btn-danger shanChu' onclick='del(\""+StudentsFileArr[i].stid+"\")'>删除</button><button class='layui-btn layui-btn-warm xiugai' onclick='xiugai(\""+StudentsFileArr[i].stid+"\")'>修改</button></td></tr>")
+
+
+
+        }//把循环遍历的所有数组显示在html里
+        $table.trigger("paging");
+    }
+    //单行删除
+    function del(j) {
+        layer.confirm('确定删除吗?', function(index){
+            for(var i=0;i<StudentsFileArr.length;i++) {
+                if (j == StudentsFileArr[i].stid) {
+                    StudentsFileArr.splice(i, 1);
+                    bindDataStudent();
+                    layer.close(index);
+                }
+            }
+        })
+    }
+    //添加页码
+    function str(){
+        $table = $('table');
+        currentPage = 0;//当前页默认值为0
+        pageSize = 4;//每一页显示的数目
+        bindDataStudent();
+        $table.bind('paging',function(){
+
+            $table.find('#tbStudent tr').hide().slice(currentPage*pageSize,(currentPage+1)*pageSize).show();
+        });
+
+        sumRows = $table.find('#tbStudent tr').length;
+        sumPages = Math.ceil(sumRows/pageSize);//总页数
+
+        $pager = $('<div class="page"></div>');  //新建div，放入a标签,显示底部分页码
+        for(var pageIndex = 0 ; pageIndex<sumPages ; pageIndex++){
+            $('<a href="#" id="pageStyle" onclick="changCss(this)"><span>'+(pageIndex+1)+'</span></a>').bind("click",{"newPage":pageIndex},function(event){
+                currentPage = event.data["newPage"];
+                $table.trigger("paging");
+                //触发分页函数
+            }).appendTo($pager);
+            $pager.append(" ");
+        }
+        $pager.insertAfter($table);
+        $table.trigger("paging");
+
+        //默认第一页的a标签效果
+        $pagess = $('#pageStyle');
+        $pagess[0].style.backgroundColor="#009671";
+        $pagess[0].style.color="#ffffff";
+    };
+
+    //a链接点击变色，再点其他回复原色
+    function changCss(obj){
+        var arr = document.getElementsByTagName("a");
+        for(var i=0;i<arr.length;i++){
+            if(obj==arr[i]){       //当前页样式
+                obj.style.backgroundColor="#009671";
+                obj.style.color="#ffffff";
+
+            }
+            else
+            {
+                arr[i].style.color="";
+                arr[i].style.backgroundColor="";
+            }
+        }
+
+    }
+    //遮罩
+    $("#zhezhao").click(function () {
+        $("#zhezhao").hide();
+        $("#addDiv").hide();
+        $("#tiShikuang").hide()
+    });
+    //信息框
+    $("#cencelAdd").click(function () {
+        $("#zhezhao").hide();
+        $("#addDiv").hide()
+    });
+    //添加信息按钮
+    $("#tianJia").click(function () {
+        $("#zhezhao").show();
+        $("#addDiv").show();
+        stundno="";
+
+        $('#studenttNo').removeAttr("disabled");
+        $("#studenttNo").val("");
+        $("#studenttName").val("");
+        $("#studentSex").val("");
+        $("#studentAge").val("");
+        $("#studentClass").val("");
+        $("#birthday").val("");
+        $("#parentsName").val("");
+        $("#parentsPhone").val("");
+        $("#address").val("");
+        $("#enrolledDate").val("");
+        $("#grade").val("");
+        $("#headeTeacher").val("");
+        $("#notes").val("")
+    });
+    //信息确认按钮
+    $("#addxinxi").click(function () {//点击该ID地址
+        var studenttNo = $("#studenttNo").val();//对应ID地址元素值
+        var studenttName =$("#studenttName").val();//对应ID地址元素值
+        var studentSex = $("#studentSex").val();//对应ID地址元素值
+        var studentAge = $("#studentAge").val();//对应ID地址元素值
+        var studentClass = $("#studentClass").val();//对应ID地址元素值
+        var birthday = $("#birthday").val();//对应ID地址元素值
+        var parentsName = $("#parentsName").val();//对应ID地址元素值
+        var parentsPhone = $("#parentsPhone").val();//对应ID地址元素值
+        // var address = $("#address").val();//对应ID地址元素值
+        var enrolledDate = $("#enrolledDate").val();//对应ID地址元素值
+        // var grade = $("#grade").val();//对应ID地址元素值
+        var headeTeacher = $("#headeTeacher").val();//对应ID地址元素值
+        var notes = $("#notes").val();//对应ID地址元素值
+        if (studenttNo == "") {//判断用户是否输入
+//            $("#tiShikuang").show();
+//            $("#zhezhao").show();
+//            $("h1").text("请输入学号！");
+            layer.confirm("请输入学号！");
+            layer.close(index);
+            return
+        } else if (studenttName == "") {//判断用户是否输入
+//            $("#tiShikuang").show();
+//            $("#zhezhao").show();
+//            $("h1").text("请输入姓名！");
+            layer.confirm("请输入姓名！");
+            layer.close(index);
+            return
+        }
+        if (stundno == "") {//判断该变量状态
+            var xuehao=chaZhaoXueHao(studenttNo).stid;//搜索判断该 值并返回他的数组，再把数组中对应的值赋给左边
+            if (studenttNo == xuehao) {//判断是否相等
+//                $("#tiShikuang").show();
+//                $("#zhezhao").show();
+//                $("h1").text("该学号已存在！");
+                layer.confirm("该学号已存在！");
+                layer.close(index);
+                return
+            } else {//把用户输入的值组合成对象
+                var obj = {"stid": studenttNo, "stname": studenttName, "stsex":studentSex,"stage": studentAge, "stClass": studentClass,
+                    "birthday": birthday,"headeTeacher": parentsName,"enrolledDate": parentsPhone};
+                StudentsFileArr.push(obj);//把对象加入该数组中
+                bindDataStudent();//刷新绑定
+                $("#zhezhao").hide();
+                $("#addDiv").hide();
+                layer.confirm("添加成功！");
+                layer.close(index);
+            }
+        } else {
+            //不为空为修改
+            for (var j = 0; j < StudentsFileArr.length; j++) {//遍历循环
+                if (stundno == StudentsFileArr[j].stid) {//判断是否                    StudentsFileArr[j].studenttNo = studenttNo;//把右边的值赋给左边
+                    StudentsFileArr[j].stname = studenttName;
+                    StudentsFileArr[j].stsex = studentSex;
+                    StudentsFileArr[j].stage = studentAge;
+                    StudentsFileArr[j].stClass = studentClass;
+                    StudentsFileArr[j].birthday = birthday;
+                    StudentsFileArr[j].headeTeacher = headeTeacher;
+                    StudentsFileArr[j].enrolledDate = enrolledDate;
+                    // StudentsFileArr[j].enrolledDate = address;
+                    // StudentsFileArr[j].enrolledDate = enrolledDate;
+                    // StudentsFileArr[j].grade = grade;
+                    // StudentsFileArr[j].headeTeacher = headeTeacher;
+                    // StudentsFileArr[j].notes =notes;
+//                    alert("修改成功");
+                    $("#zhezhao").hide();
+                    $("#addDiv").hide();
+//                    $("#tiShikuang").show();
+//                    $("#zhezhao").show();
+//                    $("h1").text("修改成功！");
+                    layer.confirm("修改成功！");
+//                    layer.close(index);
+                    bindDataStudent();
+                    break
+                }
+            }
+        }
+    });
+    //修改
+    function xiugai(e) {
+        var studenttNo=chaZhaoXueHao(e);
+        if(studenttNo){
+            stundno=e;
+            $("#zhezhao").show();//模态框显示
+            $("#addDiv").show();//模态框显示
+            $("#studenttNo").attr("disabled","disabled");
+            $("#studenttNo").val(studenttNo.stid);//给模态框赋值
+            $("#studenttName").val(studenttNo.stname);
+            $("#studentSex").val(studenttNo.stsex);
+            $("#studentAge").val(studenttNo.stage);
+            $("#studentClass").val(studenttNo.stClass);
+            $("#birthday").val(studenttNo.birthday);
+            $("#headeTeacher").val(studenttNo.headeTeacher);
+            $("#enrolledDate").val(studenttNo.enrolledDate);
+            // $("#address").val(studenttNo.address);
+            // $("#enrolledDate").val(studenttNo.enrolledDate);
+            // $("#grade").val(studenttNo.grade);
+            // $("#headeTeacher").val(studenttNo.headeTeacher);
+            // $("#notes").val(studenttNo.notes);
+        }
+    }
+    //查询判断是否存在
+    function chaZhaoXueHao(tuno) {
+        for(var i=0;i<StudentsFileArr.length;i++){
+            if(tuno==StudentsFileArr[i].stid){//判断数组里是否存在该值
+                return StudentsFileArr[i];
+            }
+        }
+        return false
+    }
+    //全部删除
+    $("#shanChu").click(function () {
+        layer.confirm('确定全部删除吗?', function(index){
+            $("#tbStudent").html("");
+            layer.close(index);
+        })
+
+
+    });
+    //学号查询
+    $("#xueHaoChaXun").click(function () {
+        var xuehao=$("#xueHao").val();
+        var studenttNo=chaZhaoXueHao(xuehao);
+        if(studenttNo){
+            $("#tbStudent").html("");
+            $("#tbStudent").html("<tr><td>"+studenttNo.stid+"</td><td>"+studenttNo.stname+"</td><td>"+studenttNo.stsex+"</td><td>"+studenttNo.stage+"</td>" +
+                "<td>"+studenttNo.stClass+"</td><td>"+studenttNo.birthday.replace('T16:00:00.000Z','')+"</td><td>"+studenttNo.headeTeacher+"</td><td>"+studenttNo.enrolledDate.replace('T16:00:00.000Z','')+"</td>" +
+                "<td><button class='layui-btn layui-btn-danger shanChu' onclick='del(\""+studenttNo.stid+"\")'>删除</button><button class='layui-btn layui-btn-warm xiugai' onclick='xiugai(\""+studenttNo.stid+"\")'>修改</button></td></tr>")
+
+        }else {
+//            $("#tiShikuang").show();
+//            $("#zhezhao").show();
+//            $("h1").text("你输入的姓名不存在！")
+            layer.confirm("你输入的学号不存在！");
+            layer.close(index);
+        }
+    });
+    //查询姓名判断是否存在
+    function chazhao(tuno) {
+        for(var i=0;i<StudentsFileArr.length;i++){
+            if(tuno==StudentsFileArr[i].stname){//判断数组里是否存在该值
+                return StudentsFileArr[i];
+            }
+        }
+        return false
+    }
+    //姓名查询
+    $("#xingMingChaXun").click(function () {
+        var xuehao=$("#xingMing").val();
+        var studenttName=chazhao(xuehao);
+//            for(var i=0;i<StudentsFileArr.length;i++){
+        if(studenttName) {//判断数组里是否存在该值
+            $("#tbStudent").html("");
+            $("#tbStudent").html("<tr><td>" + studenttName.stid + "</td><td>" + studenttName.stname + "</td><td>" + studenttName.stsex + "</td><td>" + studenttName.stage + "</td>" +
+                "<td>" + studenttName.stClass + "</td><td>" + studenttName.birthday.replace('T16:00:00.000Z','') + "</td><td>" + studenttName.headeTeacher + "</td><td>" + studenttName.enrolledDate.replace('T16:00:00.000Z','') + "</td>" +
+                "<td><button class='layui-btn layui-btn-danger shanChu' onclick='del(\"" + studenttName.stid + "\")'>删除</button><button class='layui-btn layui-btn-warm xiugai' onclick='xiugai(\"" + studenttName.stid + "\")'>修改</button></td></tr>")
+            return
+
+        }else{
+//            $("#tiShikuang").show();
+//            $("#zhezhao").show();
+//            $("h1").text("你输入的姓名不存在！")
+            layer.confirm("你输入的姓名不存在！");
+            layer.close(index);
+        }
+//                else if(xuehao!=StudentsFileArr[i].studenttName){
+//                    $("#tiShikuang").show();
+//                    $("#zhezhao").show();
+//                    $("h1").text("你输入的姓名不存在！")
+//                }
+
+//            }
+
+    });
+    //年级查询
+    $("#banJiChaXun").click(function () {
+        var xuehao=$("#banJi").val();
+        arr=[];
+        for(var i=0;i<StudentsFileArr.length;i++){
+            if(xuehao==StudentsFileArr[i].stClass){//判断数组里是否存在该值
+                arr.push(StudentsFileArr[i]);
+                nianJi();
+            }
+        }if(arr==""){
+//            $("#tiShikuang").show();
+//            $("#zhezhao").show();
+//            $("h1").text("你输入的年级不存在！");
+            layer.confirm("你输入的年级不存在！");
+            layer.close(index);
+        }
+
+    });
+    function nianJi() {//年级数组循环
+        $("#tbStudent").html("");
+        for(var j=0;j< arr.length;j++){
+            $("#tbStudent").append("<tr><td>"+arr[j].stid+"</td><td>"+arr[j].stname+"</td><td>"+arr[j].stsex+"</td><td>"+arr[j].stage+"</td>" +
+                "<td>"+arr[j].stClass+"</td><td>"+arr[j].birthday.replace('T16:00:00.000Z','')+"</td><td>"+arr[j].headeTeacher+"</td><td>"+arr[j].enrolledDate.replace('T16:00:00.000Z','') +"</td>" +
+                "<td><button class='layui-btn layui-btn-danger shanChu' onclick='del(\""+arr[j].stid+"\")'>删除</button><button class='layui-btn layui-btn-warm xiugai' onclick='xiugai(\""+arr[j].stid+"\")'>修改</button></td></tr>"
+
+        );
+            $table.trigger("paging");
+        }
+    }
+
+
+    //性别查询
+    $("#xingBieChaXun").click(function () {
+        xingBieArr=[];
+        var xuehao=$("#xingBie").val();
+        for(var i=0;i<StudentsFileArr.length;i++){
+            if(xuehao==StudentsFileArr[i].stsex){//判断数组里是否存在该值
+                xingBieArr.push(StudentsFileArr[i]);
+                xingBie();
+            }
+        } if(xingBieArr==""){
+//            $("#tiShikuang").show();
+//            $("#zhezhao").show();
+//            $("h1").text("你输入的有误！");
+            layer.confirm("你输入的有误！");
+            layer.close(index);
+        }
+
+    });
+    function xingBie() {//性别数组循环
+        $("#tbStudent").html("");
+        for(var j=0;j< xingBieArr.length;j++){
+            $("#tbStudent").append("<tr><td>"+xingBieArr[j].stid+"</td><td>"+xingBieArr[j].stname+"</td><td>"+xingBieArr[j].stsex+"</td><td>"+xingBieArr[j].stage+"</td>" +
+                "<td>"+xingBieArr[j].stClass+"</td><td>"+xingBieArr[j].birthday.replace('T16:00:00.000Z','')+"</td><td>"+xingBieArr[j].headeTeacher+"</td><td>"+xingBieArr[j].enrolledDate.replace('T16:00:00.000Z','')+"</td>" +
+                "<td><button class='layui-btn layui-btn-danger shanChu'' onclick='del(\""+xingBieArr[j].stid+"\")'>删除</button><button class='layui-btn layui-btn-warm xiugai' onclick='xiugai(\""+xingBieArr[j].stid+"\")'>修改</button></td></tr>")
+
+            $table.trigger("paging");
+        }
+    }
+    $("#xingShi").click(function () {
+        if($("#tbStudent").html()==""){
+            $("#tbStudent").html("")
+        }else {
+            bindDataStudent();
+        }
+
+    });
+    $(".guanBi").click(function () {
+        $("#tiShikuang").hide();
+        $("#zhezhao").hide();
+    })
+    $(document).ready(function(){
+        var username=$("#loginUser").text();
+        var jiaose;
+        for(var i=0;i<userArr.length;i++){
+            if(username==userArr[i].userName){
+                jiaose=userArr[i].juese;
+
+            }
+        }
+        if(jiaose=="学生"){
+            $("#tianJia").hide();
+            $("#shanChu").hide();
+            $(".xiugai").hide();
+            $(".shanChu").hide();
+        }
+    })
+</script>
+</body>
+</html>

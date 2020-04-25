@@ -1,0 +1,13 @@
+CACHE MANIFEST
+#这是一个注释符
+# version
+CACHE:
+
+#是注释号   要缓存的资源，在首次访问的时候下载到客户端
+login.html
+
+NETWORK:#不缓存的
+dome.appcache
+
+FALLBACK:
+stmdentsMang.html 404.html
