@@ -1,0 +1,5 @@
+body {
+  border-left: 1px solid var(--foo);
+  width: calc(45%);
+  border-top: 1px solid var(--foo);
+}
