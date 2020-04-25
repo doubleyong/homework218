@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            color: #000000;
+        }
+        body{
+            background-color: #F2F2F2;
+        }
+        .content{
+            width: 1000px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        table{
+            width: 100%;
+            color: #666666;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            color: #666666;
+            text-align: center;
+        }
+
+        table th {
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #E6E6E6;
+            font-weight: 400;
+            background-color: #F2F2F2;
+        }
+        table td {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #E6E6E6;
+        }
+
+        table tbody tr:hover {
+            background-color: #F2F2F2;
+        }
+        #tbUser:empty:before{
+            content: "暂无数据";
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h2>管理</h2>
+    <div>
+        <form id="searchForm">
+            用户名：<input type="text" name="txtSearchName" id="txtSearchName"/>
+            性别：
+            <select name="selSex" id="selSex">
+                <option value="-1">全部</option>
+                <option value="1">男</option>
+                <option value="0">女</option>
+            </select>
+            <button id="btnSearch" type="button">查询</button>
+        </form>
+    </div>
+    <table  border="1" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr>
+            <th>教师id</th>
+            <th>密码</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbUser">
+
+        </tbody>
+    </table>
+    <div id="divPage">
+
+    </div>
+    <div>
+        <form id="addForm">
+            <p><input type="text" name="txtUser" id="txtUser"/></p>
+            <p><input type="password" name="txtPwd" id="txtPwd"/></p>
+            <p><button id="btnAdd" type="button">添加</button></p>
+        </form>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/ajaxFn.js"></script>
+<script>
+    //加载完在调用getUserlist
+    var totalCount; //总条数
+    var totalPage;//总页数
+    var currentPage=1; //默认第一页
+    var pageSize=3;//每页显示条数
+    $(function(){
+        getUserlist();
+        delEvent();//添加删除按钮事件
+        addEvent();//添加添加按钮事件
+        searchEvent();
+        pageEvent();//给页码加点击事件
+        pageBar();
+    });
+    function pageEvent(){
+        $("#divPage").on("click","button",function(){
+            currentPage = Number($(this).text());
+            getUserlist();
+
+        })
+    }
+    //显示页码
+    function pageBar(){
+        var searchName=$("#txtSearchName").val();
+        var sex=$("#selSex").val();
+        //1.总条数
+        ajax("post","totalCount.do",true,function(data){
+            var json=JSON.parse(data);
+            totalCount=json[0].num;
+            totalPage=Math.ceil(totalCount/pageSize);
+            $("#divPage").html("")
+            for(var i=1;i<totalPage;i++){
+                $("#divPage").append(`<button>${i}</button>`);
+            }
+        },"user="+searchName+"&sex="+sex)
+    }
+    function searchEvent(){
+        $("#btnSearch").click(function(){
+            currentPage=1;
+            getUserlist();
+            pageBar();
+        })
+    }
+    function addEvent(){
+        $("#btnAdd").click(function () {
+            ajax("post","postadd.do",true,function(data){
+                alert(data)
+                getUserlist();
+            },$("#addForm").serialize())
+        })
+    }
+    function delEvent(){
+        $("#tbUser").on("click",".del",function(){
+            var id=$(this).attr("data-id");
+            ajax("get","delete.do",true,function(data){
+                alert(data);
+                getUserlist();
+            },"uid="+id)
+        })
+    }
+    //显示
+    function getUserlist(){
+        //传值到ajaxFn.js
+        var searchName=$("#txtSearchName").val();
+        var sex=$("#selSex").val();
+        ajax("post","search.do",true,function(data){
+//                console.log(data);
+            var json=JSON.parse(data);
+            displayUserData(json);
+        },"user="+searchName+"&sex="+sex+"&curPage="+currentPage+"&pageSize="+pageSize);
+
+    }
+    function displayUserData(arr){
+        $("#tbUser").html("");
+//            for(var i=0;i<json.length;i++){
+//                $("#tbUser").append(`<tr><td>${json[i].username}</td><td>${json[i].upassword}</td><td>${json[i].tname}</td><td>${json[i].age}</td><td>${json[i].sex}</td></tr>`);
+//            }
+        arr.forEach(function(item,index){
+            $("#tbUser").append(`<tr><td>${item.username}</td><td>${item.upassword}</td><td>${item.tname}</td><td>${item.age}</td><td>${item.sex}</td><td><button class="del" data-id="${item.id}">删除</button></td></tr>`);
+        })
+    }
+</script>
+</html>
