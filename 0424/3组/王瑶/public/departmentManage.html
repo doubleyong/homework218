@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>部门管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/commonCss.css">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .PersonnelInformationIndex>header>h2{
+            float: left;
+        }
+        .PersonnelInformationIndex>header{
+            overflow: hidden;
+        }
+        .PersonnelInformationIndex>header #btnAddStaffMessage{
+            width: 120px;
+            height: 35px;
+            margin-top: 20px;
+            float: right;
+            background-color: white;
+            border: 1px solid rgb(54,115,255);
+            color:rgb(54,115,255);
+            border-radius: 5px;
+        }
+        .PersonnelInformationIndex>section{
+            background-color: white;
+            padding: 10px;
+        }
+        .PersonnelInformationIndex>section>div{
+            margin-bottom: 30px;
+            margin-top: 30px;
+            box-sizing: border-box;
+        }
+        #invert{
+            margin-right: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="PersonnelInformationIndex">
+    <header><h2>部门管理</h2><div><button id="btnAddStaffMessage" data-toggle="modal" data-target="#myAddModal"><span class="glyphicon glyphicon-plus"></span>新增人员信息</button></div></header>
+    <section>
+        <div>
+            <label for="searchName">姓名：</label><input type="text" class="form-group" placeholder="请输入员工姓名" id="searchName" name="searchName">
+            <label for="searchDepart">所属部门：</label>
+            <select name="searchDepart" id="searchDepart" class="form-group">
+                <option value="-1">全部</option>
+                <option value="1">财务部</option>
+                <option value="2">销售部</option>
+                <option value="3">行政部</option>
+                <option value="4">生产部</option>
+                <option value="5">设计部</option>
+            </select>
+            <button id="btnSearch" class="btn_A">查询</button>
+        </div>
+        <table class="table table-responsive table-striped">
+            <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>工号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>职位</th>
+                <th>部门</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <!--员工信息显示部分-->
+            <tbody id="tbStaff">
+            </tbody>
+        </table>
+        <!--显示页码-->
+        <div id="divPage"></div>
+    </section>
+    <!--模态框-->
+    <div class="modal fade" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width:450px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">员工信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="addForm">
+                        <!--<div class="form-group">-->
+                            <!--<label for="inputID" class="col-sm-2 control-label">Id</label>-->
+                            <!--<div class="col-sm-10">-->
+                                <!--<input type="text" class="form-control" id="inputID" placeholder="Id">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSex" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputSex" placeholder="性别">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNumber" class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="inputNumber" placeholder="电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPost" class="col-sm-2 control-label">职位</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPost" placeholder="职位">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDepartment" class="col-sm-2 control-label">部门</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDepartment" placeholder="部门">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnSave">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.3.4.1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/ajaxFn.js"></script>
+<!--<script src="js/personManage.js"></script>-->
+<script type="text/javascript">
+    var currentPage=1;
+    var pageSize=4;
+    var totalCount;
+    var totalPage;
+    $(function () {
+        getStaffData();//获取数据
+        pageBar();//显示页码
+        pageEvent();//页码点击事件
+        delEvent();//删除事件
+        addEvent();//添加事件
+        searchEvent();//搜索时间
+    });
+
+    /**
+     * 查询按钮事件*/
+    function searchEvent() {
+        $("#btnSearch").click(function () {
+            currentPage=1;
+            getStaffData();
+            pageBar();
+        })
+    }
+
+    /**
+     * 删除事件*/
+    function delEvent() {
+       $("#tbStaff").on("click",".btnDel",function () {
+           var id=$(this).attr("data-id");
+           ajax("post","delete.do",true,function (data) {
+               alert(data);
+               getStaffData();
+               pageBar();
+           },"id="+id)
+       })
+    }
+
+    /**
+     * 添加事件*/
+    function addEvent() {
+        $("#btnSave").click(function () {
+//            var inputID=$("#inputID").val();
+            var inputName=$("#inputName").val();
+            var inputSex=$("#inputSex").val();
+            var inputNumber=$("#inputNumber").val();
+            var inputPost=$("#inputPost").val();
+            var inputDepartment=$("#inputDepartment").val();
+            ajax("post","add.do",true,function (data) {
+                $('#myAddModal').modal('hide');
+                alert(data);
+                getStaffData();
+                pageBar();
+            },"inputName="+inputName+"&inputSex="+inputSex+"&inputNumber="+"&inputPost="+inputPost+"&inputDepartment="+inputDepartment)
+        })
+    }
+    
+    /**
+     * 页码点击事件*/
+    function pageEvent() {
+        $("#divPage").on("click","button",function () {
+            currentPage=Number($(this).text());
+            $("#divPage button").removeClass("btn-primary");
+            $(this).addClass("btn-primary");
+            getStaffData();
+        })
+    }
+    /**
+     * 显示页码*/
+    function pageBar() {
+        var searchName=$("#searchName").val();
+        var searchDepart=$("#searchDepart").val();
+        ajax("post","totalCount.do",true,function (data) {
+            var json=JSON.parse(data);
+            totalCount=json[0].num;
+            totalPage=Math.ceil(totalCount/pageSize);
+            $("#divPage").html("");
+            for(var i=1;i<=totalPage;i++){
+                $("#divPage").append(`<button class="btn btn-default">${i}</button>`)
+            }
+        },"staffName="+searchName+"&depart="+searchDepart)
+    }
+
+    /**
+     * 获取员工信息*/
+    function getStaffData() {
+        var searchName=$("#searchName").val();
+        var searchDepart=$("#searchDepart").val();
+        ajax("post","search.do",true,function (data) {
+            var json=JSON.parse(data);
+            displayStaffData(json);
+        },"staffName="+searchName+"&depart="+searchDepart+"&currPage="+currentPage+"&pageSize="+pageSize)
+    }
+    //显示数据函数
+    function displayStaffData(arr) {
+        $("#tbStaff").html("");
+        arr.forEach(function (item,index) {
+            $("#tbStaff").append(`<tr><td><input type="checkbox"></td><td>${item.id}</td><td>${item.staffName}</td><td>${item.sex}</td><td>${item.phoneNumber}</td><td>${item.post}</td><td>${item.depart}</td>
+            <td><button class="btnModify btn btn-primary">修改</button><button class="btnDel btn btn-danger" data-id='${item.id}'>删除</button></td></tr>`)
+        })
+    }
+</script>
+</body>
+</html>
