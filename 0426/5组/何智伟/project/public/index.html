@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #head{
+            width: 120px;
+            height: 120px;
+            border: 1px solid black;
+            margin-left: 100px;
+            cursor: pointer;
+        }
+        #head p{
+            text-align: center;
+        }
+        #head p:nth-of-type(1){
+
+            font-size: 50px;
+        }
+        #myfile{
+            display: none;
+        }
+        #displayImg{
+           border: 1px solid black;
+            /*display: none;*/
+            box-sizing: border-box;
+            margin: 50px 0 0 100px;
+            position: relative;
+        }
+        #myCut{
+            position: absolute;
+            border: 1px solid red;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="head">
+        <p>+</p>
+        <p>选择头像</p>
+    </div>
+    <input type="file" name="myfile" id="myfile" accept=".jpg,.png,.gif,.jpeg">
+
+    <div id="displayImg">
+        <div id="myCut"></div>
+    </div>
+    <br>
+    <button type="button" id="cutBtn">剪切</button>
+
+
+
+
+</body>
+<script src="js/jQuery%20JavaScript%20Library%20v3.4.1.js"></script>
+<script>
+    var img;
+    var cj = document.getElementById("myCut");
+    var imgWidth,imgHeight;
+    var leftL,topL;
+
+    $(function () {
+        chooseFile();
+        $("#cutBtn").hide();
+
+
+    })
+    
+    function  chooseFile() {
+        $("#head").click(function () {
+            $("#myfile")[0].click()
+        })
+        
+    }
+
+    $("#myfile").change(function(){
+        if($("#myfile").get(0).files[0].size>2/4*1024*1024){
+            alert("图片大了")
+        }else {
+            var file = $("#myfile").get(0).files[0];
+            var reader = new FileReader(file);
+            reader.readAsDataURL(file);
+
+            reader.onload=function() {
+                 img = new Image();
+                img.src = this.result;
+                imgWidth=img.width;
+                imgHeight=img.height;
+                $("#displayImg").css({width:imgWidth,height:imgHeight})
+
+                $("#myCut").css({width:parseInt(imgWidth/5),height:parseInt(imgHeight/3)})
+
+                $("#displayImg").append(img).show();
+                $("#cutBtn").show();
+
+            }
+        }
+
+
+    })
+
+    // mycut移动
+
+
+
+
+    cj.onmousedown=function(event){
+        var e=event|| window.event;
+        var downX= e.clientX;
+        var downY= e.clientY;
+        var positionX=parseInt(document.defaultView.getComputedStyle(cj,null).left);
+        var positionY=parseInt(document.defaultView.getComputedStyle(cj,null).top);
+        var chaX=downX-positionX;
+        var chaY=downY-positionY;
+        cj.onmousemove=function(event){
+            var e=event|| window.event;
+            var X= e.clientX;
+            var Y= e.clientY;
+            var left = parseInt(X)-chaX;
+            var top = parseInt(Y)-chaY;
+            var bijieX = parseInt($("#displayImg")[0].offsetWidth-$("#myCut")[0].offsetWidth);
+            var bijieY = parseInt($("#displayImg")[0].offsetHeight-$("#myCut")[0].offsetHeight);
+
+            if(left>0&&left<bijieX){
+                cj.style.left=left+"px";
+                leftL=left;  //leftL 红框与显示区域左边的距离
+            }
+            if(top>0&&top<bijieY){
+                cj.style.top=top+"px";
+                topL=top;
+            }
+
+        }
+        cj.onmouseup=function(){
+            cj.onmousemove=null;
+        }
+    }
+
+    //剪切
+    $("#cutBtn").click(function () {
+        cutFn();
+    })
+    function cutFn() {
+        var newCanvas = document.createElement("canvas");
+        newCanvas.height = $("#myCut")[0].offsetHeight;
+        newCanvas.width = $("#myCut")[0].offsetWidth;
+        var context =  newCanvas.getContext("2d")
+        context.drawImage(img,leftL,topL,$("#myCut")[0].offsetWidth,$("#myCut")[0].offsetHeight,0,0,$("#myCut")[0].offsetWidth,$("#myCut")[0].offsetHeight);
+        var imgData = newCanvas.toDataURL("image/png"); //将图片转为base64
+
+        //上传到服务器
+        $.ajax({
+            type:"post",
+            url:"upload.do",
+            data:{imgData:imgData},
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    }
+
+
+
+    
+</script>
+</html>
