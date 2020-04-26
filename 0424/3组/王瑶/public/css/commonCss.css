@@ -1,0 +1,26 @@
+.btn_A,.btn_B,.btn_C{
+    height: 35px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.btn_A{
+    width: 100px;
+    background-color:rgb(54,115,255);
+}
+.btn_B{
+    width: 60px;
+    background-color:rgb(54,115,255);
+}
+.btn_C{
+    width: 60px;
+    background-color:rgb(249,100,0);
+}
+input{
+    outline: none;
+}
+.table tbody tr td,.table thead tr th{
+    vertical-align: middle;
+    text-align: center;
+}
