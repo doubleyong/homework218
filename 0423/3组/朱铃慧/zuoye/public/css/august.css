@@ -1,0 +1,109 @@
+.container{
+    width: 100%;
+    background-color: #e2e2e2;
+}
+.p80{
+    width: 60%;
+    padding: 0 20%;
+    display: block;
+}
+.banner{
+    width: 100%;
+    height: 340px;
+    display: block;
+    background-color: white;
+}
+.banner img{
+    width: 100%;
+    height: 150px;
+}
+.banner>p{
+    font-size: 18px;
+    margin-left: 20px;
+}
+.banner>p,.banner>p>h3{
+    display: block;
+    height: 30px;
+    width: 60%;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+form{
+     background-color: white;
+     width: 100%;
+     padding-bottom: 100px;
+
+ }
+form p>h2{}
+form p{}
+form fieldset{
+    /*margin-top: 50px;*/
+    width: 60%;
+    margin-left: 20px;
+    margin-right: 40%;
+    padding: 10px 10px;
+}
+form fieldset input{
+    display: block;
+    /*margin-top: 50px;*/
+    width: 80%;
+    padding: 5px 0;
+    margin-right: 40%;
+    background-color: white;
+    color: #020202;
+}
+form>input:last-of-type{
+    /*border-right: 1px solid black;*/
+    /*margin-top: 30px;*/
+    font-size: 13px;
+    display: block;
+    padding: 0 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    background-color: #020202;
+    /*height: 50px;*/
+    border-radius: 5px;
+    float: left;
+}
+form input::-webkit-input-placeholder{
+    padding-left: 5px;
+}
+
+/*Î²²¿*/
+.footer{
+    width: 100%;
+    height: 100px;
+    display: block;
+    margin-top: 50px;
+    background-color: #e9e9e9;
+}
+.footer h5{
+    text-align: center;
+    line-height: 25px;
+}
+.footer ul{
+    overflow: hidden;
+}
+.footer li{
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0px 10px;
+    margin-right: 20px;
+    float: left;
+    background-color: #f6f6f6;
+}
+.footer li i{
+    display: block;
+    font-size: 20px;
+    float: left;
+}
+.footer li p{
+    display: block;
+    font-size: 13px;
+    color: #020202;
+    float: left;
+}

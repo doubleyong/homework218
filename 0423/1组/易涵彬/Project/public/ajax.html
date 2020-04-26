@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成都彭于晏</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        table{
+            margin: auto;
+            width: 500px;
+        }
+        tr{
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .hed{
+            text-align: center;
+            margin: 50px 0;
+            font-size: 30px;
+        }
+        .sousuo{
+            margin: 30px auto;
+            width: 500px;
+        }
+        #divpage{
+            margin: 30px auto;
+            width: 500px;
+        }
+        #divpage button{
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+        }
+        .add{
+            margin: 30px auto;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<div class="hed">用户信息显示</div>
+<div class="sousuo">
+    用户名：<input type="text" name="namechaxun" id="namechaxun">
+    性别：
+    <select name="selsex" id="selsex">
+        <option value="-1">全部</option>
+        <option value="1">男</option>
+        <option value="0">女</option>
+    </select>
+    <button id="btnchaxun">查询</button>
+</div>
+<table cellspacing="0">
+    <thead>
+    <tr>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody id="userTb">
+
+    </tbody>
+</table>
+<div id="divpage"></div>
+<div class="add">
+    <p><input type="text" name="textuser" id="textuser"></p>
+    <p><input type="password" name="texpwd" id="texpwd"></p>
+    <p><button class="btnadd" id="btnadd">添加</button></p>
+</div>
+</body>
+<script src="js/jq.js"></script>
+<script src="js/ajaxFN.js"></script>
+<script>
+    var totalCount;
+    var totalPage;
+    var currentPage = 1;
+    var pageSize = 3;
+    getUserList();
+    delRvent();
+    addEvent();
+    sousuoEvent();
+    pageEvent();
+    pageBar();
+    function pageEvent() {
+        $("#divpage").on("click","button",function () {
+            currentPage = Number($(this).text());
+            getUserList()
+        })
+    }
+    function sousuoEvent() {
+        $("#btnchaxun").click(function () {
+            getUserList();
+            pageBar()
+        })
+    }
+    function addEvent() {
+        $("#btnadd").click(function () {
+            var usern = $("#textuser").val();
+            var userp = $("#texpwd").val();
+            console.log(usern);
+            console.log(userp);
+            ajax('post','postadd.do',true,function (data) {
+                getUserList();
+            },`username=${usern}&pwd=${userp}`);
+            pageBar();
+        })
+    }
+    function getUserList() {
+        var sex = $("#selsex").val();
+        console.log(sex);
+        var sousuoName = $("#namechaxun").val();
+        ajax('post','search.do',true,function (data) {
+            var userArr = JSON.parse(data);
+            huoqudaying(userArr);
+        },'user='+sousuoName+'&sex='+sex+"&curPage="+currentPage+"&pageSize="+pageSize);
+
+    }
+    function huoqudaying(userArr) {
+        document.getElementById("userTb").innerHTML ="";
+        userArr.forEach(function (item,index) {
+            document.getElementById("userTb").innerHTML +=`
+                <tr>
+                    <td>${item.userid}</td>
+                    <td>${item.usepwd}</td>
+                    <td><button class="del" data-id="${item.id}">删除</button></td>
+                </tr>
+                `
+        })
+    }
+    function delRvent() {
+        $("#userTb").on("click",".del",function () {
+            var id = $(this).attr("data-id");
+            console.log(id);
+            ajax("get","delete.do",true,function (data) {
+                getUserList();
+            },"id="+id)
+            pageBar();
+        })
+    }
+    function pageBar() {
+        var sex = $("#selsex").val();
+        console.log(sex);
+        var sousuoName = $("#namechaxun").val();
+        ajax("post",'totalCount.do',true,function (data) {
+            var json = JSON.parse(data);
+            totalCount = json[0].num;
+            totalPage = Math.ceil(totalCount/pageSize);
+            $("#divpage").html("");
+            for(let i = 1;i<=totalPage;i++){
+                $("#divpage").append(`<button>${i}</button>`);
+            }
+        },'user='+sousuoName+'&sex='+sex)
+    }
+</script>
+</html>

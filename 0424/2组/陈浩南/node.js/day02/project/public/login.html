@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" manifest="demo.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>登录哈哈哈哈哈</h2>
+<form action="/login.do" method="post">
+    <p><input type="text" name="txtUser" id="txtUser" placeholder="用户名"></p>
+    <p><input type="password" name="txtPwd" id="txtPwd" placeholder="密码"></p>
+    <p>
+        <button id="btnLogin" type="button">登录</button>
+    </p>
+</form>
+<script src="js/jquery.3.4.0.js"></script>
+<script type="text/javascript">
+    $("#btnLogin").click(function () {
+        var user = $("#txtUser").val();
+        var pwd = $("#txtPwd").val();
+
+        // sessionStorage.setItem("username", user);
+        // sessionStorage.password = pwd;
+
+        // localStorage.setItem("username", user);
+        // localStorage.password = pwd;
+
+        var obj = {username: user, password: pwd};
+        localStorage.setItem("userInformation", JSON.stringify(obj));
+        // 注：localStorage和sessionStorage存取的值，都是字符串
+
+        location.href = "studentManage.html";
+    });
+</script>
+</body>
+</html>

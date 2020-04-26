@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>王者荣耀</title>
+    <style>
+        *{
+            margin: auto;
+            padding: 0;
+        }
+        #playArea{
+            position: relative;
+            width: 1000px;
+            height: 600px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url(images/bg.jpg);
+            box-sizing: border-box;
+            margin-top: 50px;
+            overflow: hidden;
+        }
+        #playArea img{
+            position: absolute;
+        }
+        #toolbar{
+            position: fixed;
+            left: 300px;
+            top: 80px;
+            z-index: 1;
+        }
+        #toolbar p{
+            font-size: 20px;
+        }
+        #toolbar p span{
+            font-weight: bolder;
+            padding: 0 5px;
+            color: red;
+        }
+        #on{
+            cursor: pointer;
+            background-image: url(images/start.gif);
+            height: 66px;
+            width: 252px;
+            transition: all 0.2s linear;
+            position: fixed;left: 650px;top: 320px;
+            z-index: 2;
+
+        }
+        #on:hover{
+            background-image: url(images/startOver.gif);
+            height: 66px;
+            width: 252px;
+        }
+        .yincang{
+            display: none;
+        }
+        audio{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<a id="on" onclick="start()"></a>
+<div id="toolbar">
+
+    <p>你的积分是:<span id="jiFen">0</span></p>
+    <p>第<span id="GuanKa">1</span>关</p>
+    <p>玩家血量: <span id="Blood">50</span></p>
+</div>
+<div id="playArea">
+
+</div>
+<audio src="music/bg.mp3" id="audioBg"></audio>
+<audio src="music/dragonShoot.mp3" id="audioShoot"></audio>
+<audio src="music/ghostDie.mp3" id="audioDie"></audio>
+<audio src="music/gameover.mp3" id="audiogameover"></audio>
+<script type="text/javascript" src="js/toutu.js"></script>
+</body>
+</html>
