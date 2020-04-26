@@ -1,0 +1,99 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+@cursor: pointer;
+//字体颜色
+@color:#222;
+//背景颜色
+@bgcB:brown;
+@bgcW:white;
+@bgcP:pink;
+//文本居中
+@textAlign:center;
+//字体大小
+.fontSize(@size:18px){
+  font-size: @size;
+}
+//高度函数
+.boxHeight(@height:1px){
+  height:@height;
+}
+//宽度函数
+.boxWidth(@width:1px){
+  width:@width;
+}
+//块居中函数
+.margin(@height){
+margin: @height auto;
+}
+//padding模式匹配
+.mixin(paddingTop,@height){
+  padding-top:@height;
+}
+.mixin(paddingBottom,@height){
+  padding-bottom:@height;
+}
+.mixin(paddingRight,@height){
+  padding-right:@height;
+}
+.mixin(paddingLeft,@height){
+  padding-left:@height;
+}
+//.mixin(@_,@height){
+//  padding: @height;
+//}
+//边框模式匹配
+.mixin(borderTop,@borderwidth) {
+  border-top-width: @borderwidth;
+}
+.mixin(borderLeft,@borderwidth){
+  border-left-width: @borderwidth;
+}
+.mixin(borderRigth,@borderwidth){
+  border-right-width: @borderwidth;
+}
+.mixin(borderBottom,@borderwidth){
+  border-bottom-width: @borderwidth;
+}
+#box{
+  .boxWidth(300px);
+  .boxHeight(200px);
+  background-color: @bgcB;
+  .margin(50px);
+  text-align: @textAlign;
+}
+h2{
+  //.margin(10px);
+  .mixin(paddingTop,10px)
+}
+p{
+  color: @color;
+  .mixin(paddingTop,10px);
+  .mixin(paddingBottom,5px);
+  .fontSize(18px)
+}
+p input{
+  .boxWidth(200px);
+  .boxHeight(25px);
+  .mixin(borderTop,0);
+  .mixin(borderLeft,0);
+  .mixin(borderRigth,0);
+}
+#isDengLu{
+  .margin(10px);
+  background-color: @bgcW;
+  color:@color ;
+  .boxHeight(30px);
+  .boxWidth(100px);
+  .mixin(borderTop,0);
+  .mixin(borderLeft,0);
+  .mixin(borderRigth,0);
+  .mixin(borderBottom,0);
+  &:hover{
+    .margin(10px);
+    color: @bgcW;
+    background-color: @bgcP;
+    cursor:@cursor;
+  }
+}

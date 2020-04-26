@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stuoper</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/jquery.3.4.0.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <style>
+        body{
+            width: 50%;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+        body>div:nth-child(2){
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <form class="bs-example bs-example-form" role="form">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            全部
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right">
+
+                            <li><a href="#">男</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">女</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </form>
+</div>
+<div><button type="button" class="btn btn-info" style="margin-top:-55px;margin-right: 300px;outline: none">搜索</button></div>
+
+<table class="table table-condensed">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>USERNAME</th>
+        <th>PASSWORD</th>
+        <th>OPERATION</th>
+    </tr>
+    </thead>
+  <tbody id="isTb">
+
+  </tbody>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="outline: none">
+        添加
+    </button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="outline: none">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        添加用户
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="username">
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="pwd">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="outline: none">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" style="outline: none">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</table>
+</body>
+<script SRC="js/Ajax.js"></script>
+<script SRC="js/jquery3.4.1.js"></script>
+<script>
+  $(function () {
+      getUserList();
+  })
+  function getUserList() {
+      ajax("get","userlist.do",true,function (result) {
+          var json = JSON.parse(result);
+          $("#isTb").html('');
+          json.forEach(function (item,index) {
+              $("#isTb").append(`<tr><td></td><td>${item.username}</td><td>${item.pwd}</td><td><button>DELETE</button></td></tr>`)
+          })
+      })
+  }
+</script>
+</html>

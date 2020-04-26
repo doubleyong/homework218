@@ -1,0 +1,307 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font/iconfont.eot');
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('../font/iconfont.woff2') format('woff2'),
+        url('../font/iconfont.woff') format('woff'),
+        url('../font/iconfont.ttf') format('truetype'),
+        url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+.headnav{
+    width: 1903px;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(0,0,0,1);
+    overflow: hidden;
+}
+.logo{
+    height: 50px;
+    margin-left: 320px;
+}
+nav{
+    width: 700px;
+    margin-left: 570px;
+}
+nav>ul>li{
+    width: 100px;
+    
+}
+nav>ul>li>a{
+    color: white;
+    font-size: 14px;
+    transition:all .3s ease;
+}
+nav>ul>li:hover a{
+    color: rgb(146,139,129);
+}
+/* 搜索登陆与注册 */
+.head_login{
+    width: 170px;
+    height: 50px;
+    margin-right: 320px;
+    padding-top: 10px;
+
+}
+/* 选中登陆 */
+.head_login>ul>li:nth-child(2){
+    border-radius: 5px 0 0 5px;
+    margin-right: 2px;
+}
+/* 选中注册 */
+.head_login>ul>li:nth-child(3){
+    border-radius: 0px 5px 5px 0px;
+}
+.head_login>ul>li>a:hover{
+    color: rgb(146,139,129);
+}
+.head_login>ul>li>a{
+    color: white;
+    transition:all .3s ease;
+}
+.head_login ul li{
+    width: 55px;
+    height: 30px;
+    background-color: rgb(91,91,91);
+    line-height: 30px;
+    text-align: center;
+}
+/* 选中放大镜 */
+.head_login>ul>li:nth-child(1){
+    color: white;
+    background-color: rgba(0,0,0,0);
+}
+header h1{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+/* 选中头部文字 */
+header>div:nth-child(2)>div{
+    width: 160px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 11px;
+    text-align: center;
+    background-color: rgb(152,135,111);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    color: white;
+}
+section{
+    width: 1903px;
+    background-color: rgb(241,241,241);
+    overflow: hidden;
+}
+.main{
+    width: 1260px;
+    margin: 20px auto;
+    background-color: white;
+    overflow: hidden;
+}
+.main_left{
+    width: 240px;
+}
+.main_left>div{
+    width: 240px;
+    height: 190px;
+    border-right:1px solid rgb(206, 206, 206) ;
+}
+.main_left>ul{
+    width: 240px;
+}
+.main_left>ul>li{
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-right:1px solid rgb(206, 206, 206) ;
+}
+.main_left>ul>li>a{
+    font-size: 14px;
+    color: rgb(124, 124, 124);
+    transition: all .5s ease;
+}
+.main_left>ul>li>a>span{
+    font-size: 14px;
+    color: rgb(124, 124, 124);
+}
+.main_left>ul>li>a:hover{
+    color: rgb(0,195,182);
+}
+.main_left>ul>li>a:hover span{
+    color: rgb(0,195,182);
+}
+.main_left>ul>li:nth-child(1){
+    border-top:1px solid rgb(206, 206, 206) ;
+    border-bottom:1px solid rgb(206, 206, 206) ; 
+}
+.main_left>ul>li:nth-child(5){
+    border-bottom:1px solid rgb(206, 206, 206) ; 
+}
+.main_left>ul>li:nth-child(9){
+    border-bottom:1px solid rgb(206, 206, 206) ; 
+}
+.main_left>ul>li:nth-child(12){
+    border-bottom:1px solid rgb(206, 206, 206) ; 
+}
+.main_left>div>div:nth-child(1){
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border: 5px solid white;
+    box-shadow: 0px 0px 6px #000;;
+    overflow: hidden;
+    margin: 10px auto;
+}
+.main_left>div>div:nth-child(2){
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+.main_right{
+    width: 1019px;
+    height: 725px;
+    margin-left: 241px;
+}
+
+
+
+
+
+
+
+
+/* 页尾 */
+footer{
+    width: 1903px;
+    background-color: rgb(34,34,34);
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+footer>ul{
+    width: 1260px;
+    margin: auto;
+    border-bottom:1px solid rgb(128, 128, 128) ;
+}
+footer>ul>li{
+    color: white;
+    font-weight: 100;
+    margin-right: 70px;
+}
+footer>ul>li>h3{
+    color: rgb(178,178,178);
+}
+footer>ul>li>p{
+    font-size: 12px;
+    color: rgb(89,89,89);
+}
+footer>ul>li>ul>li>a{
+    font-size: 12px;
+    color: rgb(150, 150, 150);
+    line-height: 30px;
+    transition:all .3s ease;
+}
+footer>ul>li>ul>li>a:hover{
+    color: rgb(214, 214, 214);
+    text-decoration:underline
+}
+footer>ul>li>P{
+    line-height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+footer>ul>li>P>a{
+    color: rgb(150, 150, 150);
+    transition:all .3s ease;
+}
+footer>ul>li>P>a:hover{
+    color: rgb(214, 214, 214);
+    text-decoration:underline
+}
+footer>ul>li:nth-child(1){
+    width: 440px;
+}
+footer>ul>li:nth-child(2),li:nth-child(3){
+    width: 60px;
+}
+footer>ul>li:nth-child(4){
+    width: 120px;
+}
+footer>ul>li:nth-child(5){
+    width: 220px;
+    margin-right: 0;
+}
+footer>ul>li:nth-child(4)>ul>li{
+    float: none;
+}
+.partner{
+    margin-top: 20px;
+}
+.partner>div{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    float: left;
+    transition:all .3s ease;
+    text-align: center;
+    margin-right: 5px;
+}
+.partner>div>span{
+    font-size: 15px;
+    line-height: 30px;
+    color: rgb(150, 150, 150);
+}
+.partner>div:nth-child(6){
+    visibility: hidden;
+}
+footer>ul>li>div>input{
+    width: 165px;
+    height: 25px;
+    background-color: rgb(28,28,28);
+    border: 1px solid rgb(136, 136, 136);
+    border-radius: 3px;
+}
+footer>ul>li>div>button{
+    width: 42px;
+    height: 25px;
+    color: white;
+    background-color:rgb(0,195,182) ;
+    border: 0px solid white;
+    margin-left: 5px;
+}
+.partner>div:nth-child(1):hover{
+    background-color: rgb(104,144,33);
+}
+.partner>div:nth-child(2):hover{
+    background-color: rgb(211,89,69);
+}
+.partner>div:nth-child(3):hover{
+    background-color: rgb(186,83,198);
+}
+.partner>div:nth-child(4):hover{
+    background-color: rgb(7,163,202);
+}
+.partner>div:nth-child(5):hover{
+    background-color: rgb(201,132,21);
+}
+.copyright{
+    width: 1260px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(145, 145, 145);
+    font-size: 12px;
+}
+.copyright>span{
+    color: rgb(0,195,182) ;
+}

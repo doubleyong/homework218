@@ -1,0 +1,14 @@
+CACHE MANIFEST:
+#注释
+#version 1.0
+CACHE:
+#要缓存的资源，在首次 进入的时候会下载到客户端
+login.html
+
+NETWORK:
+#不缓存的文件
+
+#重定向
+FALLBACK:
+*.html 404.html
+
