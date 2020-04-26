@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+<style>
+    .add {
+        font-size: 50px;
+    }
+    #Upload{
+        text-align: center;
+        padding: 20px;
+        margin: 100px;
+        width: 100px;
+        height: 120px;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    #Upload .add{
+        padding-bottom: 20px;
+    }
+    #Upload:hover{
+        background-color: gainsboro;
+    }
+    .hide{
+        display: none;
+    }
+    #displayImg{
+        position: relative;
+        width: 400px;
+        height: 300px;
+        border: 1px solid black;
+        margin-left: 400px;
+        text-align: center;
+        overflow: hidden;
+    }
+    #displayImg img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+    }
+    #cj{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        z-index: 1;
+        left: calc(50% - 100px);
+        top: calc(50% - 100px);
+    }
+    #btnSave{
+        margin-left: 400px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+<div id="Upload">
+
+    <input type="file" name="txtFile" id="txtFile" class="hide" accept=".png,.jpg,.gif,.jpeg"/>
+
+    <span class="glyphicon glyphicon-plus add"></span>
+
+    <p>上传头像</p>
+
+</div>
+<div id="displayImg">
+    <div id="cj">
+
+    </div>
+    <img src="" alt="">
+</div>
+<button id="btnSave" class="btn btn-primary">保存</button>
+<img id="cueImg" alt="">
+<script src="jquery-3.4.1.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script>
+    var img;
+    $('#Upload').click(function () {
+        $('#txtFile')[0].click();
+    });
+    var leftL,topL;
+    $('#txtFile').change(function () {
+        if ($('#txtFile').get(0).files[0].size>5*1024*1024) {
+            alert('图片过大')
+        }else {
+            var file = $('#txtFile').get(0).files[0];
+            var reader = new FileReader(file);
+            reader.readAsDataURL(file);
+            reader.onload=function () {
+                img = new Image();
+                img.src = this.result;
+                $('#displayImg').find('img').attr('src',this.result);
+            }
+        }
+    });
+//
+    $('#cj')[0].onmousedown=function () {
+        var e=window.event||arguments[0];
+        var downX = e.clientX;
+        var downY = e.clientY;
+        var positionX = parseInt($('#cj').css('left'));
+        var positionY = parseInt($('#cj').css('top'));
+        var chaX = downX-positionX;
+        var chaY = downY-positionY;
+
+        $('#cj')[0].onmousemove=function () {
+            var e=window.event||arguments[0];
+            var X = e.clientX;
+            var Y = e.clientY;
+            var left = parseInt(X)-chaX;
+            var top = parseInt(Y)-chaY;
+
+            if (left>0&&left<200){
+                $('#cj').css('left',left+'px');
+                leftL=left;
+            }
+            if (top>0&&top<100){
+                $('#cj').css('top',top+'px');
+                topL=top;
+            }
+        }
+    };
+    document.onmouseup=function(){
+        $('#cj')[0].onmousemove=null;
+    };
+    $('#cj')[0].onmouseup=function () {
+        $('#cj')[0].onmousemove=null;
+    };
+    $('#btnSave').click(function () {
+        var myCanvas = document.createElement('canvas');
+        myCanvas.height = 200;
+        myCanvas.width = 200;
+        var context = myCanvas.getContext('2d');
+        context.drawImage(img,leftL,topL,200,200,0,0,200,200);
+        var imgData = myCanvas.toDataURL('images/png');
+        console.log(imgData);
+        document.getElementById('cueImg').src=imgData;
+        /**
+         * 将图片发送服务器端,并保存
+         */
+        $.ajax({
+            type:'post',
+            url:'index.do',
+            dara:{imgData:imgData},
+            success: function (data) {
+
+            }
+        })
+    });
+
+
+</script>
+</body>
+</html>
