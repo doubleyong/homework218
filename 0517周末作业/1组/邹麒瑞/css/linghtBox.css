@@ -1,0 +1,95 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#lightBox{
+  width: 1300px;
+  background-color: rgba(0,0,0,0.2);
+  margin: auto;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display:  -webkit-flex;
+  -webkit-justify-content: space-around;
+}
+#lightBox figure{
+  width: 400px;
+  height: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  position: relative;
+}
+#lightBox figure img{
+  width: 400px;
+  height: 400px;
+}
+#lightBox figure figcaption{
+  width: 200px;
+  height: 50px;
+  border: 3px dashed   white;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 100px);
+  opacity: 0;
+  transition: all 200ms linear;
+}
+#lightBox figure:hover figcaption{
+  opacity: 1;
+}
+#LunBo{
+  width: 1903px;
+  height: 936px;
+  background-color: rgba(0,0,0,0.3);
+  position: fixed;
+  top: 0;
+  display: none;
+}
+#LunBo>div:nth-child(1){
+  width:  1000px;;
+  height:700px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  border: 5px solid palegreen;
+}
+#LunBo img{
+  width: 1000px;
+  height: 700px;
+}
+#isLeft,#isRight{
+  font-size: 40px;
+  position: absolute;
+  color: white;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  top:calc(50% - 25px);
+  cursor: pointer;
+  background-color: rgba(0,0,0,.5);
+}
+#isLeft{
+  left: 10px;
+}
+#isRight{
+  right: 10px;
+}
+#isClose{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  right: 10px;
+  top: 0;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
