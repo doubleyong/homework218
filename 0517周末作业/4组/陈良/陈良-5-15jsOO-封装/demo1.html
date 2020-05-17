@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<button onclick="clickEvent()">点击</button>
+<body>
+    <script src="js/AJAX.js"></script>
+    <!-- <script src="AJAX.js"></script> -->
+    <script type="text/javascript">
+        function clickEvent(){
+            ajax({
+                method:'get',
+                url:"",
+                param:"",
+                success:function(){
+                    console.log("成功");
+                }
+            })
+        }
+    </script>
+</body>
+</html>
