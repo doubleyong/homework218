@@ -1,0 +1,32 @@
+用面向对象思想封装一个通用灯箱:
+1.用户使用方式:
+	在html里面按照figure>img+figcaption的格式放置图片
+	在JS中引入封装js文件
+	样式类的就是引入CSS
+	打开图片后可以左右切换图片
+	
+	用户调用:
+	<link ...lightbox.css>
+	<div id="lightbox">
+        <figure class="">
+            <img src="" alt=""/>
+            <figcaption>描述文字</figcaption>
+        </figure>
+		 <figure class="">
+            <img src="" alt=""/>
+            <figcaption>描述文字</figcaption>
+        </figure>
+		 <figure class="">
+            <img src="" alt=""/>
+            <figcaption>描述文字</figcaption>
+        </figure>
+		 <figure class="">
+            <img src="" alt=""/>
+            <figcaption>描述文字</figcaption>
+        </figure>
+    </div>
+	
+	
+	
+	<link>
+    <script src="lighbox.js"></script>
