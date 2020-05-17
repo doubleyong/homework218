@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>灯箱封装</title>
+    <link rel="stylesheet" href="css/lightBox.css">
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<div id="lightbox">
+    <figure class="" data-id="1">
+            <img src="img/1.jpg" alt=""/>
+            <figcaption>旅行工作</figcaption>
+    </figure>
+    <figure class="" data-id="2">
+            <img src="img/2.jpg" alt=""/>
+            <figcaption>家庭晚宴</figcaption>
+    </figure>
+    <figure class="" data-id="3">
+            <img src="img/3.jpg" alt=""/>
+            <figcaption>欢乐热浴</figcaption>
+    </figure>
+    <figure class="" data-id="4">
+
+            <img src="img/4.jpg" alt=""/>
+            <figcaption>温馨早餐</figcaption>
+
+
+    </figure>
+    <figure class="" data-id="5">
+
+            <img src="img/5.jpg" alt=""/>
+            <figcaption>温馨家庭</figcaption>
+
+
+    </figure>
+    <figure class="" data-id="6">
+
+            <img src="img/6.jpg" alt=""/>
+            <figcaption>温馨家庭</figcaption>
+
+    </figure>
+
+</div>
+<!--轮播图-->
+<div id="main" class="hide">
+    <div class="imgContainer" id="imgContainer" style="margin-left: 0">
+        <img src="img/1.jpg" alt="" id="imgLists">
+    </div>
+    <div class="close" id="close">
+        <img src="img/close.png" alt="">
+    </div>
+    <div class="prevPc " id="prevPc"><img src="img/toPre.png" alt=""></div>
+    <div class="nextPc " id="nextPc"><img src="img/toNext.png" alt=""></div>
+</div>
+</body>
+<script src="js/jquery.3.4.0.js"></script>
+<script src="js/lightBoxLun.js"></script>
+<script>
+    var imgs=["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+//    调用show
+
+    $("figure").click(function () {
+//        获得图片下标，图片下标为当前
+        showLun();
+        var currentIndex=$(this).attr("data-id");
+        //    调用轮播
+        Lun.lun({
+            current:currentIndex,
+            imgArr:imgs,
+            element:"#imgLists",
+            prevClick:"#prevPc",
+            nextClick:"#nextPc"
+        })
+    });
+    function showLun() {
+        var current=$(this).attr("data-id");
+        console.log(current);
+        $("#lightbox").hide();
+        $("#main").show();
+    }
+    function closeLun() {
+        $("#main").hide();
+        $("#lightbox").show();
+    }
+//    点击关闭按钮图片
+    $("#close").click(function () {
+       closeLun();
+    })
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+
+#main{
+    width: 800px;
+    /*overflow: hidden;*/
+    margin: 0 auto;
+    /*border: 1px solid red;*/
+    position: relative;
+}
+.imgContainer{
+    width: 800px;
+    margin: 0 auto;
+}
+.imgContainer img{
+    width: 800px;
+    height: 575px;
+}
+
+.prevPc{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+
+    top: calc(50% - 25px);
+    left: 0;
+    color: white;
+
+
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+/*下一张*/
+.nextPc{
+    position: absolute;
+    color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    top: calc(50% - 25px);
+    right: 0;
+
+
+}
+
+.prevPc,.nextPc:hover{
+    cursor: pointer;
+}
+
