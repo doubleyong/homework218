@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lightBox</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #lightbox{
+        width: 100%;
+        padding: 10%;
+        box-sizing: border-box;
+    }
+    .lightBox_item{
+        width: 33%;
+        display: inline-block;
+        margin-bottom: 30px;
+        position: relative;
+        text-align: center;
+    }
+    .lightBox_item img{
+        width: 86%;
+        height: 220px;
+    }
+    .lightBox_item figcaption{
+        position: absolute;
+        display: block;
+        width: 140px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        color:whitesmoke;
+    }
+    .lightBox_item:hover > figcaption{
+        border: 2px solid whitesmoke;
+    }
+    .lightBox_item:hover .Mask{
+        opacity: 0.3;
+    }
+    .Mask{
+        position: absolute;
+        width: 86%;
+        height: 220px;
+        margin-left: 7%;
+        top: 0;
+        background-color: rgb(0,0,0);
+        opacity: 0;
+    }
+    #moreDiv{
+        color: whitesmoke;
+        position: absolute;
+        background-color: rgba(66,66,66,0.8);
+        width: 100%;
+        top: 0;
+    }
+    #lefBtn{
+        left: 12%;
+    }
+    #rigBtn{
+        right: 12%;
+    }
+    #lefBtn,#rigBtn{
+        position: absolute;
+        top: 50%;
+        font-size: 40px;
+        cursor: pointer;
+    }
+    #close{
+        position: absolute;
+        right: 14%;
+        top: 20px;
+        font-size: 26px;
+        cursor: pointer;
+    }
+    #moreDiv img{
+        width: 80%;
+        height: 620px;
+        padding-left: 10%;
+    }
+</style>
+<body>
+<div id="lightbox">
+    <figure class="lightBox_item">
+        <img src="img/1.jpg" alt=""/>
+        <div class="Mask"></div>
+        <figcaption>旅行工作</figcaption>
+    </figure>
+    <figure class="lightBox_item ">
+        <img src="img/2.jpg" alt=""/>
+        <div class="Mask"></div>
+        <figcaption>家庭晚宴</figcaption>
+    </figure>
+    <figure class="lightBox_item">
+        <img src="img/3.jpg" alt=""/>
+        <div class="Mask"></div>
+        <figcaption>欢乐热浴</figcaption>
+    </figure>
+    <figure class="lightBox_item">
+        <img src="img/4.jpg" alt=""/>
+        <div class="Mask"></div>
+        <figcaption>温馨早餐</figcaption>
+    </figure>
+    <figure class="lightBox_item">
+        <img src="img/5.jpg" alt=""/>
+        <div class="Mask"></div>
+        <figcaption>温馨家庭</figcaption>
+    </figure>
+    <figure class="lightBox_item">
+        <img src="img/6.jpg" alt=""/>
+        <div class="Mask"></div>
+        <figcaption>温馨家庭</figcaption>
+    </figure>
+</div>
+<script src="js/jQuery-3.4.1.js"></script>
+<script>
+(function () {
+    let imgs=document.querySelectorAll('.lightBox_item img');//获取图片
+    let lightBox_item=document.getElementsByClassName('lightBox_item')//获取figure
+    let imgArr=[];
+    document.body.onclick=function () {
+        for(let i=0;i<imgs.length;i++){
+            imgArr.push(imgs[i].getAttribute('src'))
+            lightBox_item[i].onclick=function () {
+                document.body.innerHTML+=`<div id="moreDiv">
+                                        <span id='close'>X</span>
+                                        <span id="lefBtn"><</span>
+                                        <img src="${imgArr[i]}">
+                                        <span id="rigBtn">></span>
+                                    </div>`
+                document.getElementById('rigBtn').onclick=function () {
+                    console.log(i)
+                    if (i==imgArr.length-1){
+                        console.log(i)
+                        i=0;
+                    }
+                    i++
+                    document.getElementById('moreDiv').getElementsByTagName('img')[0].src=imgArr[i]
+                }
+                document.getElementById('lefBtn').onclick=function () {
+                    console.log(i)
+                    if (i==0){
+                        console.log(i)
+                        i=imgArr.length;
+                    }
+                    i--;
+                    document.getElementById('moreDiv').getElementsByTagName('img')[0].src=imgArr[i]
+                }
+                document.getElementById('close').onclick=function () {
+                    document.getElementById('moreDiv').remove()
+                }
+                console.log(imgArr)
+            }
+        }
+    }
+})()
+
+</script>
+</body>
+</html>

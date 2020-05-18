@@ -1,0 +1,67 @@
+/*版心设置*/
+#myDl{
+    width: 1000px;
+    margin: 80px auto ;
+    /*border: 1px solid pink;*/
+}
+
+/*logo设置*/
+#myDl h1{
+    margin-left: 58px;
+}
+#myDl h1 a{
+    font-size: 0;
+}
+/*登录部分*/
+#delv{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 480px;
+    background-image: url("../images/loginbg.png");
+}
+
+/*信息采集部分*/
+#delv #xinxi{
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    width: 320px;
+    /*height: 280px;*/
+    background-color: white;
+}
+#delv #xinxi .dz{
+    width: 100%;
+    height: 40px;
+}
+#delv #xinxi .dz>div{
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid pink;
+}
+#delv #xinxi .dz>div:nth-child(1){
+    border-right: 1px solid pink;
+}
+#delv #xinxi .dz>div:hover{
+    background-color: #999;
+}
+
+/*采集框*/
+#cj{
+    padding:0 40px;
+}
+#cj input{
+    width: 100%;
+    margin-top: 20px;
+}
+#cj button{
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    background-color: red;
+    text-align: center;
+    border: none;
+
+}
