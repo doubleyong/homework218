@@ -1,0 +1,17 @@
+{
+  "name":        "jmversteeg/lightbox",
+  "version":     "0.0.0",
+  "description": "Lightboxes, easy as pie",
+  "license":     "MIT",
+  "authors":     [
+    {
+      "name":     "jmversteeg",
+      "email":    "janmerijnversteeg@gmail.com",
+      "homepage": "https://github.com/jmversteeg"
+    }
+  ],
+  "type":        "wordpress-muplugin",
+  "require":     {
+    "composer/installers": "~1.0"
+  }
+}
