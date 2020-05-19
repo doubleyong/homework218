@@ -1,0 +1,90 @@
+/*重置*/
+*{
+    margin:0;
+    padding:0;
+}
+#slider{
+    width:500px;
+    height:360px;
+    margin:100px auto;
+    position:relative;
+}
+/* 图片*/
+figure{
+    width:500px;
+    height:360px;
+    position:absolute;
+    top:0;
+    left:0;
+    overflow: hidden;
+    text-align: center;
+    display: none;
+}
+figcaption{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -50px;
+    color: rgba(0,0,0,0.8);
+    font-weight: bolder;
+    font-size: 22px;
+}
+.active{
+    display: block;
+}
+img{
+    width: auto;
+    height: 360px;
+}
+/* 圆点 */
+#tab{
+    width:105px;
+    height:10px;
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    margin-left:-50px;
+}
+/* 清除浮动 */
+#tab ul{
+    overflow: hidden;
+}
+#tab ul li{
+    width:10px;
+    height:10px;
+    margin:0 5px;
+    background:rgba(255,255,254,.5);
+    border-radius:100%;
+    cursor:pointer;
+    list-style:none;
+    float:left;
+}
+.on{
+    transform: scale(1.5);
+    background: skyblue;
+}
+/*箭头*/
+#btn div{
+    width:40px;
+    height:40px;
+    position:absolute;
+    top:50%;
+    margin-top:-20px;
+    color:#fff;
+    background:#999;
+    background:rgba(0,0,0,.5);
+    font-size:20px;
+    font-weight:bold;
+    font-family:'Microsoft yahei';
+    line-height:40px;
+    text-align:center;
+    cursor:pointer;
+}
+#btn div#left{
+    left:0;
+}
+#btn div#right{
+    right:0;
+}

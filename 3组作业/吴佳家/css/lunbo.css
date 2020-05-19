@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#lunbo {
+    width: 800px;
+    height: 600px;
+    position: relative;
+    left: 350px;
+    top: 40px;
+}
+#prev,#next {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    line-height: 100px;
+    text-align: center;
+    top:calc(50% - 50px);
+    color: white;
+
+}
+#next {
+    right:0px;
+}
+.box>img{
+    width: 800px;
+    height: 600px;
+}
+#list{
+    position: absolute;
+    left: 350px;
+    bottom: 40px;
+}
+#list>li{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 0 5px;
+    display: inline-block;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0 ;
+        }
+        ul li {
+            list-style: none;
+        }
+        #banner{
+            width: 1000px;
+            height: auto;
+            margin: 50px auto;
+            border: solid 5px gray;
+            position: relative;
+            overflow: hidden;
+        }
+        ul li img {
+            width: 1000px;
+            height: 500px;
+        }
+        #next{
+            width: 50px;
+            height: 50px;
+            background-color:rgba(66,66,66,.6);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 50px;
+            text-align: center;
+            position: absolute;
+            cursor: pointer;
+            /*visibility: hidden;*/
+            right: -50px;
+            top: calc(50% - 25px);
+            transition: all .5s linear;
+        }
+        #prev{
+            width: 50px;
+            height: 50px;
+            background-color: rgba(66,66,66,.6);
+            /*border-radius: 50px ;*/
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            cursor: pointer;
+            /*visibility: hidden;*/
+            left: -50px;
+            top: calc(50% - 25px);
+            transition: all .5s linear;
+        }
+        #circe li{
+            border-radius: 50%;
+            background-color: silver;
+            width: 30px;
+            height: 30px;
+            float: left;
+        }
+        #banner:hover #next{
+               right: 0;
+               transition: all .5s linear;
+        }
+        #banner:hover #prev{
+            left: 0;
+            transition: all .5s linear;
+        }
+        /*#circe{*/
+            /*position: absolute;*/
+            /*z-index: 2;*/
+            /*bottom: 20px;*/
+            /*left: calc(50% - );*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div id="banner">
+    <ul id="list">
+        <li><img src="img/1.jpg" alt=""  id="img"></li>
+    </ul>
+
+    <!--<ul id="circe">-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+    <!--</ul>-->
+    <script src="js/jquery3.4.1.js"></script>
+    <script src="js/lunbo.js"></script>
+    <script type="text/javascript">
+        lun.lunbo({
+            imgArr:["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"],
+            time:3000,
+        });
+    </script>
+</div>
+</body>
+</html>
