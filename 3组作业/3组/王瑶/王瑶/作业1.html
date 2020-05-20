@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂模式---搜索显示</title>
+    <style type="text/css">
+        #box{
+            width: 400px;
+        }
+        #content{
+            background-color: #b3d4fc;
+            height: 100px;
+        }
+        #displayContent{
+            background-color: #abb7c6;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="content">12345,6789,130150</div>
+    <div><input type="text" name="contentSearch" id="contentSearch" placeholder="请输入要搜索的内容"><button type="button" id="btnSearch">搜索</button></div>
+    <div id="displayContent"></div>
+</div>
+<script type="text/javascript">
+    (function () {
+        var box=document.getElementById("box");
+        var content=document.getElementById("content");
+        var text=content.innerText;
+        var contentSearch=document.getElementById("contentSearch");
+        var displayContent=document.getElementById("displayContent");
+        var btnSearch=document.getElementById("btnSearch");
+        var arr=text.split(',');
+        var displayArr;//存放搜索后结果的数组
+        btnSearch.onclick=displayFn;
+        function displayFn() {
+            displayArr=[];
+            for(var i=0;i<arr.length;i++){
+                console.log(arr[i].indexOf(contentSearch.value));
+                if(arr[i].indexOf(contentSearch.value)>=0){
+                    console.log(arr[i]);
+                    displayArr.push(arr[i]);
+                    displayContent.innerText=displayArr;
+                }
+            }
+        }
+        window.displayFn=displayFn;
+    })()
+</script>
+</body>
+</html>

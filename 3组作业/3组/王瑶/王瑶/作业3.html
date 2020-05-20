@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装$作业</title>
+</head>
+<body>
+<div class="box">哈哈哈</div>
+<button id="btn">按钮</button>
+<script type="text/javascript">
+    (function () {
+        var jQuery = function (selector) {
+            return new jQuery.fn.init(selector);
+        };
+        jQuery.fn = jQuery.prototype = {
+            init: function (selector) {
+                var ele = document.querySelectorAll(selector);
+                Array.prototype.push.apply(this,ele);
+            }
+        };
+        jQuery.fn.init.prototype = jQuery.fn; //让init的实例对象可以调用jQuery原型中的方法
+        window.jQuery = window.$ = jQuery;
+    })();
+
+    console.log($(".box"));
+    //console.log($("#btn"));
+</script>
+<script type="text/javascript">
+	//console.log(jQuery("#btn"));
+</script>
+</body>
+</html>

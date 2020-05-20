@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>适配器模式--转换数据</title>
+</head>
+<body>
+<script type="text/javascript">
+    (function () {
+        function objApater() {
+            let newData = [];
+            let obj = {};
+            this.data.map(item => {
+                obj = item;
+                obj['name'] = item['keyName'];
+                delete obj['keyName'];
+                newData.push(obj);
+            })
+        }
+        window.objApater=objApater;
+    })();
+
+//    (function () {
+//        function objApater() {
+//            var data = [
+//                {stuId:1, stuName:'张三'},
+//                {stuId:2, stuName:'李四'},
+//                {stuId:3, stuName:'小陈'}
+//            ].map(function(item) {
+//                return {
+//                    keyName1: item.stuId,
+//                    keyName2: item.stuName
+//                }
+//            });
+//        }
+//        window.objApater=objApater;
+//    })()
+
+
+
+
+</script>
+</body>
+</html>
