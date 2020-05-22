@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单的增删改查</title>
+    <style>
+        li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>
+        <span>
+            <input type="text" v-model="fname">
+            <button @click="add">添加</button>
+            <button @click="searchIt">搜索</button>
+<!--            <button @click="change">替换</button>-->
+        </span>
+    </div>
+    <ul>
+        <li :key='index' v-for='(item,index) in list'>
+            {{item}}<span @click="del(index)">删除</span>
+            <span @click="mod(index)">修改</span>
+        </li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            fname: "",
+            list: [
+                "apple","orange","banana"
+                ],
+            list1: [
+                "apple","orange","banana"
+            ]
+        },
+        methods: {
+            add: function () {
+                this.list = this.list1;
+                this.list1.push(this.fname);
+                this.list = this.list1;
+            },
+            del: function (index) {
+                this.list = this.list1;
+                this.list1.splice(index,1);
+                this.list = this.list1;
+            },
+            mod: function (index) {
+                this.list = this.list1;
+                this.list1.splice(index,1,this.fname);
+                this.list = this.list1;
+            },
+            searchIt: function () {
+                var search = this.fname;
+                if(search){
+                    this.list = this.list.filter(function (item) {
+                        return (item.indexOf(search)>-1);
+                    });
+                }else{
+                    this.list = this.list1;
+                }
+            }
+            // change: function () {
+            //     this.list = this.list.slice(0,2);
+            // }
+        }
+    })
+</script>
+</body>
+</html>
