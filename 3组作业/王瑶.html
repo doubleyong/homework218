@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增删改查</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style type="text/css">
+        #app{
+            margin: 0 auto;
+            width: 1000px;
+        }
+        tbody:empty:after{
+            content:"未查找到你要搜索的员工";
+        }
+        tr th,tr td{
+            width: 10%;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+        }
+        thead tr th,tbody tr td{
+           border: 1px solid #bfbfbf;
+        }
+        tbody tr td:last-child span{
+            padding-left: 10px;
+            padding-right: 10px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="text" placeholder="请输入要搜索的员工姓名" v-model="searchName"><button id="btnAddStaffMessage" data-toggle="modal" data-target="#myAddModal"><span class="glyphicon glyphicon-plus"></span>新增人员信息</button>
+    <!--<input type="text" placeholder="请输入要搜索的部门">-->
+    <table cellspacing="0">
+        <thead>
+        <tr>
+            <th>员工编号</th>
+            <th>员工姓名</th>
+            <th>电话号码</th>
+            <th>职位</th>
+            <th>部门</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in getStaffListBySearch">
+                <td>{{item.staffId}}</td>
+                <td>{{item.staffName}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td>{{item.post}}</td>
+                <td>{{item.department}}</td>
+                <td><span data-toggle="modal" data-target="#myAddModal">修改</span><span @click="del(index)">删除</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <!--模态框-->
+    <div class="modal fade" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="width:450px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">员工信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputID" class="col-sm-2 control-label">Id</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputID" placeholder="Id" v-model="addStaffId">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputName" placeholder="姓名" v-model="addStaffName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNumber" class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputNumber" placeholder="电话" v-model="addStaffPhone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPost" class="col-sm-2 control-label">职位</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPost" placeholder="职位" v-model="addPost">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDepartment" class="col-sm-2 control-label">部门</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDepartment" placeholder="部门" v-model="addDepartment">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btnSave" @click="Add">保存</button>
+                    <button type="button" class="btn btn-primary" id="btnModify" @click="modify(index)">确定修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.3.4.0.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            staffList:[
+                {staffId:"1",staffName:"小朱",phoneNumber:"15208416660",post:"财务经理",department:"财务部"},
+                {staffId:"2",staffName:"小邓",phoneNumber:"15208416661",post:"会计",department:"财务部"},
+                {staffId:"3",staffName:"小杨",phoneNumber:"15208416662",post:"出纳",department:"财务部"},
+                {staffId:"4",staffName:"小陈",phoneNumber:"15208416663",post:"人事专员",department:"行政部"},
+                {staffId:"5",staffName:"小吴",phoneNumber:"15208416664",post:"人事经理",department:"行政部"},
+                {staffId:"6",staffName:"小王",phoneNumber:"15208416665",post:"生产部经理",department:"生产部"},
+                {staffId:"7",staffName:"小张",phoneNumber:"15208416666",post:"平面设计专员",department:"设计部"},
+                {staffId:"8",staffName:"小李",phoneNumber:"15208416667",post:"销售总监",department:"销售部"},
+                {staffId:"9",staffName:"小肖",phoneNumber:"15208416668",post:"区域经理",department:"销售部"},
+                {staffId:"10",staffName:"小蒋",phoneNumber:"15208416669",post:"前台",department:"行政部"},
+                {staffId:"11",staffName:"小何",phoneNumber:"15208416670",post:"销售内勤",department:"销售部"},
+                {staffId:"12",staffName:"小曾",phoneNumber:"15208416671",post:"物流经理",department:"物流部"},
+                {staffId:"13",staffName:"小曹",phoneNumber:"15208416671",post:"物流专员",department:"物流部"},
+                {staffId:"14",staffName:"小冉",phoneNumber:"15208416673",post:"市场部经理",department:"市场部"},
+                {staffId:"15",staffName:"小赵",phoneNumber:"15208416674",post:"市场策划",department:"市场部"}
+            ],
+            searchName:"",
+//            searchDepartment:""
+            addStaffId:"",
+            addStaffName:"",
+            addStaffPhone:"",
+            addPost:"",
+            addDepartment:""
+        },
+        methods:{
+            //删除
+            del:function (index) {
+                this.staffList.splice(index,1);
+            },
+            //增加
+            Add:function () {
+                var addStaffId=this.addStaffId;
+                var addStaffName=this.addStaffName;
+                var addStaffPhone=this.addStaffPhone;
+                var addPost=this.addPost;
+                var addDepartment=this.addDepartment;
+                this.staffList.push({staffId:addStaffId,staffName:addStaffName,phoneNumber:addStaffPhone,post:addPost,department:addDepartment});
+            },
+            //修改
+            modify:function (index) {
+                var addStaffId=this.addStaffId;
+                var addStaffName=this.addStaffName;
+                var addStaffPhone=this.addStaffPhone;
+                var addPost=this.addPost;
+                var addDepartment=this.addDepartment;
+                this.staffList[index]={staffId:addStaffId,staffName:addStaffName,phoneNumber:addStaffPhone,post:addPost,department:addDepartment};
+                vm.$set(this.staffList,index,this.staffList[index]);
+            }
+
+        },
+        computed:{
+            //搜索
+            getStaffListBySearch(){
+                var searchName=this.searchName;
+//                var searchDepartment=this.searchDepartment;
+                return this.staffList.filter(function (item) {
+                    return (item.staffName.indexOf(searchName)>=0);
+                })
+            }
+        }
+
+    });
+$("#btnSave").click(function () {
+    $("#myAddModal").modal("hide");
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <button type="button" id="btnLogin">发送</button>
+</body>
+<script src="js/ajax.js"></script>
+<script type="text/javascript">
+    document.getElementById("btnLogin").onclick=function () {
+        console.log("按钮启动了");
+
+        $.ajax({
+            method:"get",
+            url:"login.do",
+            async:true,
+            param:{user:"213124",pwd:123},
+            callback:function (data) {
+                console.log(data)
+            }
+        })
+    }
+</script>
+</html>
