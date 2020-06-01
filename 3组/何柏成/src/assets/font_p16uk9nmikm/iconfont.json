@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "494858",
+      "name": "用户登陆",
+      "font_class": "yonghudenglu",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1246682",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
