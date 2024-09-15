@@ -1,0 +1,7 @@
+[{
+  "Id": 1,"ProductName": "mac","price": 18990,"img": "./asset/img/mac.jpg"
+},{
+  "Id": 2,"ProductName": "thinkpad","price": 11990,"img": "./asset/img/thinkpad.jpg"
+},{
+  "Id": 3,"ProductName": "surface","price": 19990,"img": "./asset/img/surface.jpg"
+}]
